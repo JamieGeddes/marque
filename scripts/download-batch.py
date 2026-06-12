@@ -4,33 +4,31 @@ Downloads each accepted Sketchfab model's glTF archive into
 assets-src/<id>/raw with a LICENSE.txt record. Token comes from
 SKETCHFAB_API_TOKEN env var.
 """
-import json, os, sys, urllib.request, zipfile, datetime
+import json, os, sys, time, urllib.request, zipfile, datetime
 
 TOKEN = os.environ.get("SKETCHFAB_API_TOKEN") or sys.exit("SKETCHFAB_API_TOKEN not set")
 
 MODELS = [
-    ("lotus-exige-s-2006", "13d071ac1288486b990be3ef818d8181"),
-    ("lotus-emira", "a5d1f1962b4d4ebab6b449824fc58c9a"),
-    ("lotus-esprit-v8", "fdc64e96ed3349d9bf4aff9db79e5aa2"),
-    ("lotus-evora-gt430", "aa58af64c5a74660b06ca517e8c7f50e"),
-    ("lotus-exige-360-cup", "ccc280412c5b47478127aef8986d4903"),
-    ("lotus-elise-sprint", "fd5980631d4049259cff55bbf422aa81"),
-    ("lotus-3-eleven", "d63c1150da8e45f88e526c99cc889bfd"),
-    ("porsche-959", "0530aa8fa4b74427a71c961a5bdd7087"),
-    ("porsche-gt3-992", "ba01afbaf32846e598db315be3507db3"),
-    ("porsche-gt3-rs-992", "f17a982d5d8a4d97baef4b00b51a4e9a"),
-    ("porsche-911-dakar", "3d08be7f0ed04c368d487ee72bc05225"),
-    ("porsche-carrera-gt", "9d48aa751ab24becbf7110e93c8a7a1f"),
-    ("ferrari-laferrari", "979f7085012e4d6399f38de3f9c39012"),
-    ("ferrari-12cilindri", "cb0b42a5bda844bd8ccd62451f1db427"),
-    ("ferrari-sf90-xx", "2c80c667232544649328cf3589921bcd"),
-    ("ferrari-f8-tributo", "8a86c4d634f64f8b8ee836bc93fa6ac8"),
-    ("ferrari-f50", "9d7ec096be3546e3967ebdb5e4a87e31"),
-    ("ferrari-monza-sp2", "09b0681baaed40d9aada9138a5f75875"),
-    ("ferrari-488-pista", "1d1344847d8540e9a6a7f21184ab7769"),
-    ("ferrari-enzo", "9e790860a49d4594a6eef87cab190bba"),
-    ("ferrari-250-gto", "0d2a7ee6ace246c0b545280ca5cc4031"),
-    ("ferrari-599-gto", "14b4f6d9f84d4e30be52a2158685d3ff"),
+    ("ferrari-849-testarossa", "6e0619a84ef746998989d633a33a1851"),
+    ("ferrari-296-gts", "9a596b9d09414adfad64fc1f5fd019f9"),
+    ("lamborghini-gallardo", "ff0eb2242d0e42eb8b7034b4db639e56"),
+    ("lamborghini-aventador", "e328d9f5dcfd48bdbe8c73324b52ece3"),
+    ("bmw-m3-e46", "a067132c75f5456daa4f60c4001337d7"),
+    ("bmw-m5-competition", "29a4c13761cb40e6a050871bd40a0963"),
+    ("bmw-m1", "cd1d528eee2e4d9298c4e8647116545a"),
+    ("bmw-m3-e36", "76401039fa80419ab036bea09acb898d"),
+    ("bmw-m4-f82", "6dcbd7234690431e87e68f580be60e22"),
+    ("bmw-m3-gts-e92", "ba0c261ab55649f5a8ec1572700ae0e3"),
+    ("bmw-m3-csl-e46", "9a44382562e243a78badb5c080714508"),
+    ("bmw-i8-roadster", "57f9d1de23534a80878d048684c0e60f"),
+    ("bmw-m4-g82", "b16d7a4d771e4abd85ce4e29d41402ed"),
+    ("bmw-30-csl", "86ee7c1a83334576933ab431542269d5"),
+    ("bmw-m2-g87", "7a608716b25b4589a8cc323e9cbd1e8d"),
+    ("bac-mono", "06e164b7dc9b42129c5882f043016591"),
+    ("mercedes-slr-mclaren", "6dd3f12d311d4d1f8a55ce0e1596a442"),
+    ("mercedes-amg-one", "0f75e0705a1f455585813859d901458a"),
+    ("audi-r18", "3a5f4938e662429b8633120aa62805a4"),
+    ("audi-ur-quattro", "b9ccdd8ddc154ee99ab153794042fd07"),
 ]
 
 def api(path):
@@ -70,6 +68,7 @@ for cid, uid in MODELS:
                 "resized/transcoded to webp for real-time display.\n"
             )
         ok += 1
+        time.sleep(12)  # stay under the download-API rate limit
     except Exception as e:
         print(f"{cid}: FAILED — {e}", flush=True)
         failed.append(cid)

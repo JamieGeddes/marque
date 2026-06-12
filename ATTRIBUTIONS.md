@@ -7,6 +7,7 @@ The same credits are displayed in-app in each car's information view.
 
 License key: **BY** = [CC Attribution 4.0](https://creativecommons.org/licenses/by/4.0/) ·
 **BY-SA** = [CC Attribution-ShareAlike 4.0](https://creativecommons.org/licenses/by-sa/4.0/) ·
+**BY-NC** = [CC Attribution-NonCommercial 4.0](https://creativecommons.org/licenses/by-nc/4.0/) ·
 **BY-NC-SA** = [CC Attribution-NonCommercial-ShareAlike 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
 Some models carry NonCommercial terms — this project is non-commercial; see the
 note at the bottom before any commercial use.
@@ -41,6 +42,26 @@ note at the bottom before any commercial use.
 | Ferrari 488 Pista, 2019 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY | [Sketchfab](https://sketchfab.com/3d-models/2019-ferrari-488-pista-1d1344847d8540e9a6a7f21184ab7769) |
 | Ferrari F8 Tributo, 2020 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY | [Sketchfab](https://sketchfab.com/3d-models/2020-ferrari-f8-tributo-8a86c4d634f64f8b8ee836bc93fa6ac8) |
 | Ferrari 12Cilindri, 2025 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY | [Sketchfab](https://sketchfab.com/3d-models/2025-ferrari-12cilindri-cb0b42a5bda844bd8ccd62451f1db427) |
+| Ferrari 296 GTS, 2023 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY | [Sketchfab](https://sketchfab.com/3d-models/2023-ferrari-296-gts-9a596b9d09414adfad64fc1f5fd019f9) |
+| Ferrari 849 Testarossa, 2026 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/2026-ferrari-849-testarossa-6e0619a84ef746998989d633a33a1851) |
+| Lamborghini Gallardo LP560-4, 2010 | [temp0.crazy](https://sketchfab.com/temp0.crazy) | BY | [Sketchfab](https://sketchfab.com/3d-models/lamborghini-gallardo-2010-ff0eb2242d0e42eb8b7034b4db639e56) |
+| Lamborghini Aventador, 2011 | [Outlaw_Games](https://sketchfab.com/Outlaw_Games) | BY-NC | [Sketchfab](https://sketchfab.com/3d-models/lamborghini-aventador-e328d9f5dcfd48bdbe8c73324b52ece3) |
+| BMW 3.0 CSL (E9), 1973 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/1973-bmw-30-csl-rhd-e9-86ee7c1a83334576933ab431542269d5) |
+| BMW M1 AHG Studie, 1980 | [outpiston](https://sketchfab.com/outpiston) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/1980-bmw-m1-ahg-studie-cd1d528eee2e4d9298c4e8647116545a) |
+| BMW M3 (E36), 1993 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/1993-bmw-m3-coupe-e36-76401039fa80419ab036bea09acb898d) |
+| BMW M3 (E46), 2003 | [Lexyc16](https://sketchfab.com/Lexyc16) | BY-NC | [Sketchfab](https://sketchfab.com/3d-models/bmw-m3-e46-a067132c75f5456daa4f60c4001337d7) |
+| BMW M3 CSL (E46), 2003 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/2003-bmw-m3-csl-e46-9a44382562e243a78badb5c080714508) |
+| BMW M3 GTS (E92), 2011 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/2011-bmw-e92-m3-gts-ba0c261ab55649f5a8ec1572700ae0e3) |
+| BMW M4 (F82 LCI), 2018 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/2018-bmw-m4-coupe-f82-lci-6dcbd7234690431e87e68f580be60e22) |
+| BMW M4 Competition (G82), 2021 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/2021-bmw-m4-competition-g82-b16d7a4d771e4abd85ce4e29d41402ed) |
+| BMW M2 (G87), 2023 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/2023-bmw-m2-g87-coupe-7a608716b25b4589a8cc323e9cbd1e8d) |
+| BMW M5 Competition (F90), 2021 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/2021-bmw-m5-competition-29a4c13761cb40e6a050871bd40a0963) |
+| BMW i8 Roadster, 2019 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/2019-bmw-i8-roadster-57f9d1de23534a80878d048684c0e60f) |
+| BAC Mono, 2017 | [outpiston](https://sketchfab.com/outpiston) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/2017-bac-mono-06e164b7dc9b42129c5882f043016591) |
+| Mercedes-Benz SLR McLaren, 2004 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/2004-mercedes-benz-slr-mclaren-6dd3f12d311d4d1f8a55ce0e1596a442) |
+| Mercedes-AMG ONE, 2023 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/2023-mercedes-benz-amg-one-0f75e0705a1f455585813859d901458a) |
+| Audi R18, 2011 | [Godheim](https://sketchfab.com/Godheim) | BY | [Sketchfab](https://sketchfab.com/3d-models/audi-r18-3a5f4938e662429b8633120aa62805a4) |
+| Audi quattro, 1980 | [RDoman](https://sketchfab.com/RDoman) | BY | [Sketchfab](https://sketchfab.com/3d-models/1980-audi-ur-quattro-b9ccdd8ddc154ee99ab153794042fd07) |
 
 ## Environment
 
@@ -54,10 +75,11 @@ note at the bottom before any commercial use.
 ## Note on vehicle brands and commercial use
 
 The 3D model licenses above cover the digital assets only. Vehicle designs and
-marques (Porsche, Mercedes-Benz, Ferrari, BMW, Lotus) remain the intellectual
+marques (Porsche, Mercedes-Benz, Ferrari, BMW, Lotus, Lamborghini, Audi, BAC)
+remain the intellectual
 property of their respective manufacturers; this project is a non-commercial
 demonstration and is not affiliated with or endorsed by them.
 
-Several models are licensed **NonCommercial** (BY-NC-SA above). If this project
+Several models are licensed **NonCommercial** (BY-NC / BY-NC-SA above). If this project
 is ever commercialised, those models must be replaced or relicensed, and the
 ShareAlike terms of BY-SA/BY-NC-SA models apply to the distributed adaptations.
