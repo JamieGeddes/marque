@@ -2,7 +2,14 @@ import { create } from 'zustand'
 import { isTouchDevice } from '../hooks/useIsTouchDevice'
 import { cars } from '../data/cars'
 
-export type Phase = 'loading' | 'lobby' | 'walking' | 'paused' | 'modal'
+export type Phase =
+  | 'loading'
+  | 'lobby'
+  | 'hall-loading'
+  | 'hall-ready'
+  | 'walking'
+  | 'paused'
+  | 'modal'
 export type Quality = 'high' | 'low'
 
 const FAVOURITES_KEY = 'marque:favourites'

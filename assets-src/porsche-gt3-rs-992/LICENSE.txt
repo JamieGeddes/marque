@@ -1,0 +1,6 @@
+Model: 2023 Porsche 911 GT3 RS 2.7 Carrera Tribute 992
+Author: ddiaz-design (https://sketchfab.com/ddiaz-design)
+Source: https://sketchfab.com/3d-models/2023-porsche-911-gt3-rs-27-carrera-tribute-992-f17a982d5d8a4d97baef4b00b51a4e9a
+License: CC Attribution-NonCommercial-ShareAlike (by-nc-sa) — http://creativecommons.org/licenses/by-nc-sa/4.0/
+Downloaded: 2026-06-12 via Sketchfab Download API
+Modifications: scale-normalized, meshopt-compressed, textures resized/transcoded to webp for real-time display.

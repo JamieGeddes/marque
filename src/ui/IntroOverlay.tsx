@@ -2,15 +2,10 @@ import { useEffect } from 'react'
 import { useProgress } from '@react-three/drei'
 import { useAppStore } from '../store/useAppStore'
 import { playerControls } from '../lib/playerControls'
-import { exitToLobby } from '../lib/interactions'
+import { exitToLobby, requestEnterHall } from '../lib/interactions'
 import { useIsTouchDevice } from '../hooks/useIsTouchDevice'
 import { halls, MY_SHOWROOM_ID, getHallTitle } from '../data/halls'
 import { getCar } from '../data/cars'
-
-function enterHall(hallId: string) {
-  useAppStore.getState().setCurrentHallId(hallId)
-  playerControls.lock()
-}
 
 function Masthead({ compact }: { compact?: boolean }) {
   return (
@@ -83,7 +78,7 @@ function Lobby() {
             title={hall.title}
             tagline={hall.tagline}
             carNames={hall.carIds.map((id) => getCar(id)?.name ?? id)}
-            onEnter={() => enterHall(hall.id)}
+            onEnter={() => requestEnterHall(hall.id)}
             delay={0.55 + i * 0.12}
           />
         ))}
@@ -93,7 +88,7 @@ function Lobby() {
             title="My Showroom"
             tagline="Your private collection"
             carNames={favouriteNames}
-            onEnter={() => enterHall(MY_SHOWROOM_ID)}
+            onEnter={() => requestEnterHall(MY_SHOWROOM_ID)}
             delay={0.55 + halls.length * 0.12}
           />
         ) : (
@@ -186,6 +181,39 @@ export function IntroOverlay() {
   }
 
   if (phase === 'lobby') return <Lobby />
+
+  if (phase === 'hall-loading' || phase === 'hall-ready') {
+    return (
+      <div className="overlay overlay--solid">
+        <div className="masthead">
+          <div className="masthead__rule rise" />
+          <p className="masthead__kicker rise" style={{ animationDelay: '0.1s' }}>
+            {phase === 'hall-ready' ? 'The hall awaits' : 'Preparing'}
+          </p>
+          <h2 className="hallgate__title rise" style={{ animationDelay: '0.2s' }}>
+            {getHallTitle(currentHallId)}
+          </h2>
+        </div>
+        <div className="intro__footer">
+          {phase === 'hall-loading' ? (
+            <div className="progress rise">
+              <div className="progress__track">
+                <div className="progress__fill" style={{ width: `${active ? progress : 0}%` }} />
+              </div>
+              <p className="progress__label">Bringing the cars in — {active ? Math.round(progress) : 0}%</p>
+            </div>
+          ) : (
+            <button type="button" className="button rise" onClick={() => playerControls.lock()}>
+              Enter the hall
+            </button>
+          )}
+          <button type="button" className="hallgate__back rise" onClick={exitToLobby}>
+            ← Back to lobby
+          </button>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="overlay overlay--solid">

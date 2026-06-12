@@ -1,8 +1,9 @@
-import { Suspense, useLayoutEffect, useMemo } from 'react'
+import { Suspense, useEffect, useLayoutEffect, useMemo } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { PerformanceMonitor } from '@react-three/drei'
 import { getHallCars } from '../data/halls'
 import { useAppStore } from '../store/useAppStore'
+import { markLoaded } from '../lib/hallCache'
 import { setRoomDims } from './collision'
 import { computeHallLayout } from './layout'
 import { Room } from './Room'
@@ -10,6 +11,24 @@ import { Lighting } from './Lighting'
 import { Player } from './Player'
 import { CarExhibit } from './CarExhibit'
 import { InteractionRaycaster } from './InteractionRaycaster'
+
+/**
+ * Lives inside the same Suspense boundary as the exhibits, so this effect
+ * only commits once every model in the active hall has finished loading.
+ */
+function HallReadyNotifier() {
+  const hallId = useAppStore((s) => s.currentHallId)
+  const favourites = useAppStore((s) => s.favourites)
+
+  useEffect(() => {
+    if (!hallId) return
+    markLoaded(getHallCars(hallId, favourites).map((car) => car.model.path))
+    const { phase, setPhase } = useAppStore.getState()
+    if (phase === 'hall-loading') setPhase('hall-ready')
+  }, [hallId, favourites])
+
+  return null
+}
 
 function ActiveHall() {
   const hallId = useAppStore((s) => s.currentHallId)
@@ -49,6 +68,7 @@ export function Showroom() {
           <Suspense fallback={null}>
             <Lighting />
             <ActiveHall />
+            <HallReadyNotifier />
           </Suspense>
           <Player />
           <InteractionRaycaster />

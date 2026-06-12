@@ -421,6 +421,34 @@ body {
   white-space: nowrap;
 }
 
+.hallgate__title {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: clamp(44px, 7vw, 84px);
+  line-height: 1.05;
+  letter-spacing: 0.06em;
+  margin-top: 16px;
+}
+
+.hallgate__back {
+  appearance: none;
+  background: transparent;
+  border: none;
+  color: var(--bone-faint);
+  font-family: var(--body);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 8px;
+  transition: color 0.3s ease;
+}
+
+.hallgate__back:hover {
+  color: var(--brass);
+}
+
 .paused__actions {
   display: flex;
   gap: 16px;

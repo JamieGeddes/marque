@@ -1,5 +1,25 @@
 import { useAppStore } from '../store/useAppStore'
 import { playerControls } from './playerControls'
+import { getHallCars } from '../data/halls'
+import { allLoaded } from './hallCache'
+
+/**
+ * Lobby card click. If the hall's models are already in memory we can lock
+ * the pointer right away (the click is a fresh user gesture). Otherwise we
+ * show the hall-loading screen — mounting the hall suspends on its models —
+ * and the user enters with a second click once ready (pointer lock demands
+ * a recent gesture, which an async load completion is not).
+ */
+export function requestEnterHall(hallId: string) {
+  const { favourites, setCurrentHallId, setPhase } = useAppStore.getState()
+  const hallCars = getHallCars(hallId, favourites)
+  setCurrentHallId(hallId)
+  if (allLoaded(hallCars.map((car) => car.model.path))) {
+    playerControls.lock()
+  } else {
+    setPhase('hall-loading')
+  }
+}
 
 export function exitToLobby() {
   const { setPhase, setCurrentHallId, setSelectedCarId } = useAppStore.getState()
