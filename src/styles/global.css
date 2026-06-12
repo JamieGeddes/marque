@@ -532,6 +532,15 @@ body {
   margin-left: 10px;
 }
 
+.hud__lobby kbd {
+  font-family: var(--body);
+  font-size: 9px;
+  border: 1px solid var(--hairline);
+  border-radius: 2px;
+  padding: 1px 5px;
+  margin-left: 6px;
+}
+
 .hud__cta {
   appearance: none;
   background: rgba(12, 12, 14, 0.6);

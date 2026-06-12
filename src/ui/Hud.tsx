@@ -22,7 +22,8 @@ export function Hud() {
         onMouseDown={(e) => e.stopPropagation()}
         onClick={exitToLobby}
       >
-        ← Lobby <span className="hud__lobby-hall">{getHallTitle(currentHallId)}</span>
+        ← Lobby {!isTouch && <kbd>L</kbd>}{' '}
+        <span className="hud__lobby-hall">{getHallTitle(currentHallId)}</span>
       </button>
       <div className={`crosshair${aimedCar ? ' crosshair--aimed' : ''}`}>
         <div className="crosshair__dot" />

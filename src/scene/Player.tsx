@@ -121,6 +121,11 @@ export function Player() {
   return (
     <PointerLockControls
       ref={controls}
+      // Without a selector, drei attaches a click-to-lock handler on
+      // `document`, which re-locks the pointer on any UI click (e.g. the
+      // pause screen's "Return to lobby"). A selector that matches nothing
+      // keeps locking fully under playerControls.lock()'s control.
+      selector="#pointer-lock-none"
       onLock={() => useAppStore.getState().setPhase('walking')}
       onUnlock={() => {
         const { phase, setPhase } = useAppStore.getState()

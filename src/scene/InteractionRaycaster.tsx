@@ -2,7 +2,7 @@ import { useEffect, useMemo } from 'react'
 import * as THREE from 'three'
 import { useFrame, useThree } from '@react-three/fiber'
 import { useAppStore } from '../store/useAppStore'
-import { openAimedCar } from '../lib/interactions'
+import { openAimedCar, exitToLobby } from '../lib/interactions'
 import { getInteractiveTargets } from './interactiveRegistry'
 
 const REACH = 3.4
@@ -31,6 +31,7 @@ export function InteractionRaycaster() {
     }
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.code === 'KeyE') openAimedCar()
+      if (event.code === 'KeyL' && useAppStore.getState().phase === 'walking') exitToLobby()
     }
     document.addEventListener('mousedown', onMouseDown)
     document.addEventListener('keydown', onKeyDown)

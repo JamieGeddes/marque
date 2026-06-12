@@ -5,7 +5,9 @@ export function exitToLobby() {
   const { setPhase, setCurrentHallId, setSelectedCarId } = useAppStore.getState()
   setCurrentHallId(null)
   setSelectedCarId(null)
+  // Phase changes first so a pending unlock isn't read as a pause.
   setPhase('lobby')
+  playerControls.unlock()
 }
 
 export function openAimedCar() {
