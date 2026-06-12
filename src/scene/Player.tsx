@@ -7,7 +7,7 @@ import { useAppStore } from '../store/useAppStore'
 import { playerControls } from '../lib/playerControls'
 import { mobileInput } from '../lib/mobileInput'
 import { useIsTouchDevice } from '../hooks/useIsTouchDevice'
-import { resolvePosition } from './collision'
+import { resolvePosition, ROOM } from './collision'
 
 const EYE_HEIGHT = 1.65
 const WALK_SPEED = 3
@@ -26,6 +26,15 @@ export function Player() {
   const velocity = useRef(new THREE.Vector3())
   const [, getKeys] = useKeyboardControls()
   const camera = useThree((state) => state.camera)
+  const currentHallId = useAppStore((s) => s.currentHallId)
+
+  // Place the player at the hall entrance whenever a hall is (re)entered.
+  // ActiveHall's layout effect has already set ROOM.spawnZ by the time this runs.
+  useEffect(() => {
+    if (!currentHallId) return
+    camera.position.set(0, EYE_HEIGHT, ROOM.spawnZ)
+    camera.rotation.set(0, 0, 0, 'YXZ')
+  }, [currentHallId, camera])
 
   useEffect(() => {
     if (isTouch) {

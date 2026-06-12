@@ -3,6 +3,7 @@ import * as THREE from 'three'
 import { useFrame } from '@react-three/fiber'
 import { Text } from '@react-three/drei'
 import type { CarDefinition } from '../types'
+import type { ExhibitSlot } from './layout'
 import { useAppStore } from '../store/useAppStore'
 import { registerInteractive } from './interactiveRegistry'
 import { assetUrl } from '../lib/assetUrl'
@@ -11,7 +12,7 @@ const PLAQUE_FONT = assetUrl('fonts/CormorantGaramond-SemiBold.ttf')
 const LABEL_FONT = assetUrl('fonts/Archivo-Regular.ttf')
 const BRASS = '#b9a779'
 
-export function Pedestal({ car }: { car: CarDefinition }) {
+export function Pedestal({ car, slot }: { car: CarDefinition; slot: ExhibitSlot }) {
   const hitMesh = useRef<THREE.Mesh>(null)
   const plaqueMaterial = useRef<THREE.MeshStandardMaterial>(null)
 
@@ -34,7 +35,7 @@ export function Pedestal({ car }: { car: CarDefinition }) {
   })
 
   return (
-    <group position={car.pedestal.position} rotation-y={car.pedestal.rotationY}>
+    <group position={slot.pedestalPosition} rotation-y={slot.pedestalRotationY}>
       {/* column */}
       <mesh position={[0, 0.525, 0]}>
         <boxGeometry args={[0.34, 1.05, 0.34]} />

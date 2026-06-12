@@ -1,6 +1,13 @@
 import { useAppStore } from '../store/useAppStore'
 import { playerControls } from './playerControls'
 
+export function exitToLobby() {
+  const { setPhase, setCurrentHallId, setSelectedCarId } = useAppStore.getState()
+  setCurrentHallId(null)
+  setSelectedCarId(null)
+  setPhase('lobby')
+}
+
 export function openAimedCar() {
   const { phase, aimedCarId, setSelectedCarId, setPhase } = useAppStore.getState()
   if (phase !== 'walking' || !aimedCarId) return

@@ -2,6 +2,31 @@ import { useEffect } from 'react'
 import { useAppStore } from '../store/useAppStore'
 import { getCar } from '../data/cars'
 
+function FavouriteButton({ carId }: { carId: string }) {
+  const favourites = useAppStore((s) => s.favourites)
+  const toggleFavourite = useAppStore((s) => s.toggleFavourite)
+  const isFavourite = favourites.includes(carId)
+
+  return (
+    <button
+      type="button"
+      className={`modal__fav${isFavourite ? ' modal__fav--active' : ''}`}
+      onClick={() => toggleFavourite(carId)}
+      aria-pressed={isFavourite}
+    >
+      <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+        <path
+          d="M12 21s-7.5-4.9-10-9.5C.4 8.5 2 4.5 5.7 4.1 8 3.8 9.9 5 12 7.4 14.1 5 16 3.8 18.3 4.1 22 4.5 23.6 8.5 22 11.5 19.5 16.1 12 21 12 21z"
+          fill={isFavourite ? 'currentColor' : 'none'}
+          stroke="currentColor"
+          strokeWidth="1.5"
+        />
+      </svg>
+      {isFavourite ? 'In My Showroom' : 'Add to My Showroom'}
+    </button>
+  )
+}
+
 function closeModal() {
   const { setSelectedCarId, setPhase } = useAppStore.getState()
   setSelectedCarId(null)
@@ -39,9 +64,10 @@ export function CarInfoModal() {
         <h2 className="modal__title rise" style={{ animationDelay: '0.08s' }}>
           {car.name}
         </h2>
-        <p className="modal__year rise" style={{ animationDelay: '0.16s' }}>
-          {car.year}
-        </p>
+        <div className="modal__meta rise" style={{ animationDelay: '0.16s' }}>
+          <p className="modal__year">{car.year}</p>
+          <FavouriteButton carId={car.id} />
+        </div>
 
         <div className="modal__columns rise" style={{ animationDelay: '0.24s' }}>
           <section className="modal__description">

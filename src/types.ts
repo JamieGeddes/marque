@@ -1,3 +1,12 @@
+export interface HallDefinition {
+  id: string
+  /** Two-digit ordinal shown on the lobby card, e.g. "01". */
+  ordinal: string
+  title: string
+  tagline: string
+  carIds: string[]
+}
+
 export interface CarSpec {
   label: string
   value: string
@@ -14,8 +23,6 @@ export interface CarDefinition {
   model: {
     /** Path under public/, e.g. /models/porsche-930.glb */
     path: string
-    position: [number, number, number]
-    rotationY: number
     /** 1 when the asset pipeline has normalized the GLB to meters. */
     scale: number
   }
@@ -23,10 +30,6 @@ export interface CarDefinition {
   collider: {
     length: number
     width: number
-  }
-  pedestal: {
-    position: [number, number, number]
-    rotationY: number
   }
   attribution: {
     modelTitle: string

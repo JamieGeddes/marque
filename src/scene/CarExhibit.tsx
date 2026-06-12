@@ -1,33 +1,66 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
+import type { SpotLight } from 'three'
 import { ContactShadows } from '@react-three/drei'
 import type { CarDefinition } from '../types'
+import type { ExhibitSlot } from './layout'
 import { CarModel } from './CarModel'
 import { Pedestal } from './Pedestal'
 import { carCapsule, circleCollider, registerCollider } from './collision'
 
-export function CarExhibit({ car }: { car: CarDefinition }) {
-  const { position, rotationY, scale, path } = car.model
+function CarSpot({ target }: { target: [number, number, number] }) {
+  const light = useRef<SpotLight>(null)
+
+  useEffect(() => {
+    const spot = light.current
+    if (!spot) return
+    spot.target.position.set(target[0], 0, target[2])
+    spot.target.updateMatrixWorld()
+  }, [target])
+
+  return (
+    <spotLight
+      ref={light}
+      position={[target[0], 4.75, target[2]]}
+      angle={0.62}
+      penumbra={1}
+      intensity={260}
+      distance={14}
+      decay={2}
+      color="#fff3e2"
+    />
+  )
+}
+
+export function CarExhibit({ car, slot }: { car: CarDefinition; slot: ExhibitSlot }) {
+  const { carPosition, carRotationY, pedestalPosition } = slot
 
   useEffect(() => {
     const unregisterCar = registerCollider(
-      carCapsule(position[0], position[2], rotationY, car.collider.length, car.collider.width),
+      carCapsule(
+        carPosition[0],
+        carPosition[2],
+        carRotationY,
+        car.collider.length,
+        car.collider.width,
+      ),
     )
     const unregisterPedestal = registerCollider(
-      circleCollider(car.pedestal.position[0], car.pedestal.position[2], 0.55),
+      circleCollider(pedestalPosition[0], pedestalPosition[2], 0.55),
     )
     return () => {
       unregisterCar()
       unregisterPedestal()
     }
-  }, [car, position, rotationY])
+  }, [car, carPosition, carRotationY, pedestalPosition])
 
   return (
     <group>
-      <group position={position} rotation-y={rotationY} scale={scale}>
-        <CarModel path={path} />
+      <group position={carPosition} rotation-y={carRotationY} scale={car.model.scale}>
+        <CarModel path={car.model.path} />
       </group>
+      <CarSpot target={carPosition} />
       <ContactShadows
-        position={[position[0], 0.012, position[2]]}
+        position={[carPosition[0], 0.012, carPosition[2]]}
         scale={car.collider.length + 2}
         far={1.4}
         opacity={0.72}
@@ -36,7 +69,7 @@ export function CarExhibit({ car }: { car: CarDefinition }) {
         frames={1}
         color="#000000"
       />
-      <Pedestal car={car} />
+      <Pedestal car={car} slot={slot} />
     </group>
   )
 }

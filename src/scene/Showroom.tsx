@@ -1,13 +1,37 @@
-import { Suspense } from 'react'
+import { Suspense, useLayoutEffect, useMemo } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { PerformanceMonitor } from '@react-three/drei'
-import { cars } from '../data/cars'
+import { getHallCars } from '../data/halls'
 import { useAppStore } from '../store/useAppStore'
+import { setRoomDims } from './collision'
+import { computeHallLayout } from './layout'
 import { Room } from './Room'
 import { Lighting } from './Lighting'
 import { Player } from './Player'
 import { CarExhibit } from './CarExhibit'
 import { InteractionRaycaster } from './InteractionRaycaster'
+
+function ActiveHall() {
+  const hallId = useAppStore((s) => s.currentHallId)
+  const favourites = useAppStore((s) => s.favourites)
+
+  const hallCars = useMemo(() => getHallCars(hallId, favourites), [hallId, favourites])
+  const layout = useMemo(() => computeHallLayout(hallCars.length), [hallCars.length])
+
+  // Must land before Player's spawn effect reads ROOM.spawnZ.
+  useLayoutEffect(() => {
+    setRoomDims(layout.width, layout.depth, layout.spawnZ)
+  }, [layout])
+
+  return (
+    <>
+      <Room width={layout.width} depth={layout.depth} coveLength={layout.coveLength} />
+      {hallCars.map((car, i) => (
+        <CarExhibit key={`${hallId}:${car.id}`} car={car} slot={layout.slots[i]} />
+      ))}
+    </>
+  )
+}
 
 export function Showroom() {
   const setQuality = useAppStore((s) => s.setQuality)
@@ -17,17 +41,14 @@ export function Showroom() {
     <div className="canvas-root">
       <Canvas
         dpr={quality === 'low' ? 1 : [1, 1.75]}
-        camera={{ fov: 70, near: 0.1, far: 60, position: [0, 1.65, 7.5] }}
+        camera={{ fov: 70, near: 0.1, far: 80, position: [0, 1.65, 7.4] }}
         gl={{ antialias: true }}
       >
         <color attach="background" args={['#0c0c0e']} />
         <PerformanceMonitor onDecline={() => setQuality('low')}>
           <Suspense fallback={null}>
             <Lighting />
-            <Room />
-            {cars.map((car) => (
-              <CarExhibit key={car.id} car={car} />
-            ))}
+            <ActiveHall />
           </Suspense>
           <Player />
           <InteractionRaycaster />

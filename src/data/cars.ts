@@ -30,12 +30,9 @@ export const cars: CarDefinition[] = [
     ],
     model: {
       path: assetUrl('models/porsche-930.glb'),
-      position: [-7, 0, -3.4],
-      rotationY: 0.5,
       scale: 1,
     },
     collider: { length: 4.3, width: 1.78 },
-    pedestal: { position: [-4.2, 0, -1.6], rotationY: 1.2 },
     attribution: {
       modelTitle: 'Porsche 911 (930) Turbo 1975',
       author: 'Lexyc16',
@@ -67,12 +64,9 @@ export const cars: CarDefinition[] = [
     ],
     model: {
       path: assetUrl('models/mercedes-300sl.glb'),
-      position: [7, 0, -3.4],
-      rotationY: -0.5,
       scale: 1,
     },
     collider: { length: 4.52, width: 1.79 },
-    pedestal: { position: [4.2, 0, -1.6], rotationY: -1.2 },
     attribution: {
       modelTitle: 'Mercedes-Benz 300sl Gullwing | www.vecarz.com',
       author: 'heynic',
@@ -104,12 +98,9 @@ export const cars: CarDefinition[] = [
     ],
     model: {
       path: assetUrl('models/ferrari-f40.glb'),
-      position: [-7, 0, 3.6],
-      rotationY: 2.5,
       scale: 1,
     },
     collider: { length: 4.36, width: 1.98 },
-    pedestal: { position: [-4.2, 0, 1.7], rotationY: 1.95 },
     attribution: {
       modelTitle: 'Ferrari f40',
       author: 'BlackSnow02',
@@ -141,12 +132,9 @@ export const cars: CarDefinition[] = [
     ],
     model: {
       path: assetUrl('models/bmw-m3-e30.glb'),
-      position: [7, 0, 3.6],
-      rotationY: -2.5,
       scale: 1,
     },
     collider: { length: 4.36, width: 1.68 },
-    pedestal: { position: [4.2, 0, 1.7], rotationY: -1.95 },
     attribution: {
       modelTitle: '[FREE] BMW M3 E30',
       author: 'TinoD2',

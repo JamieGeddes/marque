@@ -1,12 +1,14 @@
 import { useAppStore } from '../store/useAppStore'
 import { getCar } from '../data/cars'
-import { openAimedCar } from '../lib/interactions'
+import { getHallTitle } from '../data/halls'
+import { openAimedCar, exitToLobby } from '../lib/interactions'
 import { useIsTouchDevice } from '../hooks/useIsTouchDevice'
 
 export function Hud() {
   const isTouch = useIsTouchDevice()
   const phase = useAppStore((s) => s.phase)
   const aimedCarId = useAppStore((s) => s.aimedCarId)
+  const currentHallId = useAppStore((s) => s.currentHallId)
   const setPhase = useAppStore((s) => s.setPhase)
   if (phase !== 'walking') return null
 
@@ -14,6 +16,14 @@ export function Hud() {
 
   return (
     <div className="hud">
+      <button
+        type="button"
+        className="hud__lobby"
+        onMouseDown={(e) => e.stopPropagation()}
+        onClick={exitToLobby}
+      >
+        ← Lobby <span className="hud__lobby-hall">{getHallTitle(currentHallId)}</span>
+      </button>
       <div className={`crosshair${aimedCar ? ' crosshair--aimed' : ''}`}>
         <div className="crosshair__dot" />
         <div className="crosshair__ring" />

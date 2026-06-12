@@ -5,9 +5,9 @@ import { ROOM } from './collision'
 const WALL_COLOR = '#333338'
 const FLOOR_COLOR = '#141417'
 
-function Cove({ position, length }: { position: [number, number, number]; length: number }) {
+function Cove({ length }: { length: number }) {
   return (
-    <group position={position}>
+    <group>
       {/* recessed housing */}
       <mesh position={[0, 0.04, 0]}>
         <boxGeometry args={[length + 0.3, 0.1, 1.5]} />
@@ -27,9 +27,17 @@ function Cove({ position, length }: { position: [number, number, number]; length
   )
 }
 
-export function Room() {
+export function Room({
+  width,
+  depth,
+  coveLength,
+}: {
+  width: number
+  depth: number
+  coveLength: number
+}) {
   const quality = useAppStore((s) => s.quality)
-  const { width, depth, height } = ROOM
+  const { height } = ROOM
 
   return (
     <group>
@@ -88,9 +96,13 @@ export function Room() {
         </mesh>
       ))}
 
-      {/* ceiling light coves */}
-      <Cove position={[-7, height - 0.03, 0]} length={9} />
-      <Cove position={[7, height - 0.03, 0]} length={9} />
+      {/* ceiling light coves — one above each exhibit column, running along z */}
+      <group position={[-7, height - 0.03, 0]} rotation-y={Math.PI / 2}>
+        <Cove length={coveLength} />
+      </group>
+      <group position={[7, height - 0.03, 0]} rotation-y={Math.PI / 2}>
+        <Cove length={coveLength} />
+      </group>
     </group>
   )
 }

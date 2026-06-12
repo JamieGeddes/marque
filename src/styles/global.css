@@ -288,6 +288,151 @@ body {
   color: var(--bone-dim);
 }
 
+/* —— lobby —— */
+
+.overlay--lobby {
+  justify-content: flex-start;
+  padding: clamp(28px, 6vh, 64px) 24px 110px;
+  overflow-y: auto;
+}
+
+.masthead--lobby .masthead__title {
+  font-size: clamp(40px, 6vw, 64px);
+  margin: 12px 0 8px;
+}
+
+.masthead--lobby .masthead__rule {
+  margin-bottom: 20px;
+}
+
+.lobby__label {
+  margin: clamp(28px, 5vh, 52px) 0 26px;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.45em;
+  text-indent: 0.45em;
+  text-transform: uppercase;
+  color: var(--bone-faint);
+}
+
+.lobby__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 320px));
+  justify-content: center;
+  gap: 18px;
+  width: min(1080px, 92vw);
+}
+
+.hall-card {
+  appearance: none;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: rgba(236, 232, 224, 0.025);
+  border: 1px solid var(--hairline);
+  color: var(--bone);
+  font-family: var(--body);
+  padding: 26px 26px 22px;
+  cursor: pointer;
+  position: relative;
+  transition:
+    border-color 0.35s ease,
+    background-color 0.35s ease,
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hall-card:hover,
+.hall-card:focus-visible {
+  border-color: var(--brass);
+  background: rgba(185, 167, 121, 0.07);
+  transform: translateY(-3px);
+  outline: none;
+}
+
+.hall-card__ordinal {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--brass);
+}
+
+.hall-card__title {
+  font-family: var(--display);
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+}
+
+.hall-card__tagline {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--bone-dim);
+}
+
+.hall-card__cars {
+  font-size: 11.5px;
+  line-height: 1.6;
+  letter-spacing: 0.04em;
+  color: var(--bone-faint);
+  border-top: 1px solid var(--hairline);
+  padding-top: 12px;
+  margin-top: 6px;
+}
+
+.hall-card__enter {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--brass);
+  opacity: 0;
+  transform: translateX(-6px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.hall-card:hover .hall-card__enter,
+.hall-card:focus-visible .hall-card__enter {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.hall-card--locked {
+  cursor: default;
+  opacity: 0.55;
+}
+
+.hall-card--locked:hover {
+  border-color: var(--hairline);
+  background: rgba(236, 232, 224, 0.025);
+  transform: none;
+}
+
+.hints--lobby {
+  position: fixed;
+  bottom: 34px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.paused__actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 34px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.button--ghost {
+  border-color: var(--hairline);
+}
+
 /* —— HUD —— */
 
 .hud {
@@ -354,6 +499,37 @@ body {
   text-indent: 0.3em;
   text-transform: uppercase;
   color: var(--brass);
+}
+
+.hud__lobby {
+  position: absolute;
+  top: max(18px, env(safe-area-inset-top));
+  left: max(18px, env(safe-area-inset-left));
+  appearance: none;
+  background: rgba(12, 12, 14, 0.55);
+  border: 1px solid var(--hairline);
+  color: var(--bone-dim);
+  font-family: var(--body);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  padding: 10px 16px;
+  cursor: pointer;
+  pointer-events: auto;
+  transition:
+    border-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.hud__lobby:hover {
+  border-color: var(--brass);
+  color: var(--bone);
+}
+
+.hud__lobby-hall {
+  color: var(--brass);
+  margin-left: 10px;
 }
 
 .hud__cta {
@@ -503,12 +679,60 @@ body {
   margin: 22px 0 6px;
 }
 
+.modal__meta {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+
 .modal__year {
   font-family: var(--display);
   font-style: italic;
   font-size: clamp(22px, 2.6vw, 30px);
   color: var(--bone-dim);
-  margin-bottom: 48px;
+}
+
+.modal__fav {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  border: 1px solid var(--hairline);
+  color: var(--bone-dim);
+  font-family: var(--body);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  padding: 11px 20px;
+  cursor: pointer;
+  transition:
+    border-color 0.3s ease,
+    color 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.modal__fav svg {
+  flex-shrink: 0;
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.modal__fav:hover {
+  border-color: var(--brass);
+  color: var(--bone);
+}
+
+.modal__fav:hover svg {
+  transform: scale(1.15);
+}
+
+.modal__fav--active {
+  border-color: var(--brass-dim);
+  color: var(--brass);
+  background: rgba(185, 167, 121, 0.08);
 }
 
 .modal__columns {

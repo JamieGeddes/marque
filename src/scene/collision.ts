@@ -17,6 +17,15 @@ export const ROOM = {
   height: 5,
   /** How close the camera may get to a wall. */
   wallMargin: 0.5,
+  /** Where the player enters the hall (facing -z, down the walkway). */
+  spawnZ: 7.4,
+}
+
+/** Called by the active hall before the player frame runs (layout effect). */
+export function setRoomDims(width: number, depth: number, spawnZ: number) {
+  ROOM.width = width
+  ROOM.depth = depth
+  ROOM.spawnZ = spawnZ
 }
 
 const colliders = new Set<Collider>()

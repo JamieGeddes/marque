@@ -1,8 +1,9 @@
 # Marque — A Virtual Motor Gallery
 
-A first-person 3D car showroom for the browser. Walk among a small collection
-of icons, circle each car at eye level, and read its story at the pedestal
-beside it.
+A first-person 3D car showroom for the browser. Choose a themed hall from the
+lobby, walk among the cars, circle each one at eye level, and read its story
+at the pedestal beside it. Mark favourites (♥ in a car's details) to build
+your own hall — My Showroom — persisted in the browser's local storage.
 
 Built with React 19, TypeScript, Vite, three.js via @react-three/fiber and
 @react-three/drei.
@@ -29,10 +30,13 @@ Desktop is the primary target: **WASD** to walk, **mouse** to look,
    scripts/optimize-models.sh assets-src/<car-id>/scene.gltf <car-id> <real-length-m>
    ```
 
-3. Add one `CarDefinition` entry in `src/data/cars.ts` (placement, collider
-   footprint, pedestal position, story, spec sheet, attribution) and a row to
-   `ATTRIBUTIONS.md`. Set `model.rotationY` after checking the facing
-   direction in the dev console (`[CarModel]` logs each model's dimensions).
+3. Add one `CarDefinition` entry in `src/data/cars.ts` (collider footprint,
+   story, spec sheet, attribution) and a row to `ATTRIBUTIONS.md`. If the
+   model's nose ends up facing the wrong way, re-run the script with a
+   `rotate-y-degrees` value (the `[CarModel]` dev log prints dimensions).
+4. Assign the car to a hall in `src/data/halls.ts` (or create a new hall —
+   one entry with id, title, tagline and carIds). Placement inside a hall is
+   computed automatically; rooms grow with the collection.
 
 ## Licensing
 
