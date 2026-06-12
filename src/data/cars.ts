@@ -1,5 +1,6 @@
 import { useGLTF } from '@react-three/drei'
 import type { CarDefinition } from '../types'
+import { assetUrl } from '../lib/assetUrl'
 
 /**
  * The exhibit registry. Adding a car to the showroom:
@@ -28,7 +29,7 @@ export const cars: CarDefinition[] = [
       { label: 'Production', value: '1975–1977 (3.0-litre)' },
     ],
     model: {
-      path: '/models/porsche-930.glb',
+      path: assetUrl('models/porsche-930.glb'),
       position: [-7, 0, -3.4],
       rotationY: 0.5,
       scale: 1,
@@ -65,7 +66,7 @@ export const cars: CarDefinition[] = [
       { label: 'Production', value: '1954–1957, 1,400 coupés' },
     ],
     model: {
-      path: '/models/mercedes-300sl.glb',
+      path: assetUrl('models/mercedes-300sl.glb'),
       position: [7, 0, -3.4],
       rotationY: -0.5,
       scale: 1,
@@ -102,7 +103,7 @@ export const cars: CarDefinition[] = [
       { label: 'Production', value: '1987–1992, 1,311 built' },
     ],
     model: {
-      path: '/models/ferrari-f40.glb',
+      path: assetUrl('models/ferrari-f40.glb'),
       position: [-7, 0, 3.6],
       rotationY: 2.5,
       scale: 1,
@@ -139,7 +140,7 @@ export const cars: CarDefinition[] = [
       { label: 'Production', value: '1986–1991, approx. 17,970 built' },
     ],
     model: {
-      path: '/models/bmw-m3-e30.glb',
+      path: assetUrl('models/bmw-m3-e30.glb'),
       position: [7, 0, 3.6],
       rotationY: -2.5,
       scale: 1,

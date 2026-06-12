@@ -5,9 +5,10 @@ import { Text } from '@react-three/drei'
 import type { CarDefinition } from '../types'
 import { useAppStore } from '../store/useAppStore'
 import { registerInteractive } from './interactiveRegistry'
+import { assetUrl } from '../lib/assetUrl'
 
-const PLAQUE_FONT = '/fonts/CormorantGaramond-SemiBold.ttf'
-const LABEL_FONT = '/fonts/Archivo-Regular.ttf'
+const PLAQUE_FONT = assetUrl('fonts/CormorantGaramond-SemiBold.ttf')
+const LABEL_FONT = assetUrl('fonts/Archivo-Regular.ttf')
 const BRASS = '#b9a779'
 
 export function Pedestal({ car }: { car: CarDefinition }) {
