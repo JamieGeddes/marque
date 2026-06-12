@@ -1,0 +1,8 @@
+node_modules
+dist
+.DS_Store
+*.local
+# raw model downloads are large; keep only the license records
+assets-src/**/*.zip
+assets-src/*/raw/
+assets-src/_placeholder/
