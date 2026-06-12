@@ -62,6 +62,31 @@ note at the bottom before any commercial use.
 | Mercedes-AMG ONE, 2023 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/2023-mercedes-benz-amg-one-0f75e0705a1f455585813859d901458a) |
 | Audi R18, 2011 | [Godheim](https://sketchfab.com/Godheim) | BY | [Sketchfab](https://sketchfab.com/3d-models/audi-r18-3a5f4938e662429b8633120aa62805a4) |
 | Audi quattro, 1980 | [RDoman](https://sketchfab.com/RDoman) | BY | [Sketchfab](https://sketchfab.com/3d-models/1980-audi-ur-quattro-b9ccdd8ddc154ee99ab153794042fd07) |
+| Audi Sport quattro, 1984 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/1984-audi-sport-quattro-a2e98736245448afa807a2b5cabe05c7) |
+| Audi R8 GT, 2011 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/2011-audi-r8-gt-82a564b96dde47a78925d9e45b78aaa1) |
+| Audi R8 V10 GT RWD, 2023 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/2023-audi-r8-coupe-v10-gt-rwd-0701d14ce550407f900df891316788f0) |
+| Audi RS 6 Avant GT, 2024 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/2024-audi-rs6-avant-gt-85ccb4a2903e4eeab4c8298a8fa4e39f) |
+| Audi R15 TDI, 2009 | [outpiston](https://sketchfab.com/outpiston) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/2009-audi-r15-tdi-f64fce5acb8a4d81a08b1bd84a6792d9) |
+| Volkswagen ID.R, 2018 | [CassioFernandes](https://sketchfab.com/CassioFernandes) | BY | [Sketchfab](https://sketchfab.com/3d-models/volkswagen-idr-with-interior-109ed75bc4df4400a308cbff7cc70f6d) |
+| Volkswagen W12 Concept, 1997 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/1997-volkswagen-w12-concept-4b8faf5ec5274676b1f16cbe3f836e03) |
+| Honda S800, 1966 | [Alexios_Apokaukos](https://sketchfab.com/Alexios_Apokaukos) | BY | [Sketchfab](https://sketchfab.com/3d-models/honda-s800-fa6c6113f1e34d9baaff80b5b586a25d) |
+| Honda CR-X, 1988 | [outpiston](https://sketchfab.com/outpiston) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/1988-honda-cr-x-573d5c2480324a879ee15221ee426160) |
+| Honda Civic Type R (EK9), 2000 | [outpiston](https://sketchfab.com/outpiston) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/2000-honda-civic-type-r-4715562e16c44c5e9e847d9ff3fc2170) |
+| Honda Integra Type R (DC2), 1998 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/1998-honda-integra-type-r-dc2-db88d2cc21654a4eb73ec9f0c2a7e113) |
+| Honda Integra Type R (DC5), 2001 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/2001-honda-integra-type-r-dc5-0fea873aaf694d1b98c308b0becd51ce) |
+| Honda Civic Type R (FK2), 2015 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/2015-honda-civic-type-r-423afaa1c6664859832d4a5458d90b52) |
+| Honda Civic Type R (FK8), 2018 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/2018-honda-civic-type-r-c312252877204a44999bf084d1e19118) |
+| Honda Civic Type R (FL5), 2023 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/2023-honda-civic-type-r-8c9484184a2b4254aafd67418b8c18db) |
+| Honda NSX-R, 1992 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/1992-honda-nsx-r-a21edb35a7714774a10b74642e815ca2) |
+| Toyota Sprinter Trueno AE86, 1985 | [TinoD2](https://sketchfab.com/TinoD2) | BY | [Sketchfab](https://sketchfab.com/3d-models/toyota-ae86-sprinter-trueno-zenki-a5737bf3cc9b4179a6e5ebe173ff70d9) |
+| Toyota Supra (A80), 1993 | [Lexyc16](https://sketchfab.com/Lexyc16) | BY-NC | [Sketchfab](https://sketchfab.com/3d-models/toyota-supra-a80-1993-dd897d7823784bc5893c183c1328e8cb) |
+| Toyota GR Supra (A90), 2019 | [thelightning](https://sketchfab.com/thelightning) | BY | [Sketchfab](https://sketchfab.com/3d-models/toyota-gr-supra-9231f2d5e71a43dd87603dc0b339d99d) |
+| Toyota GR Yaris, 2021 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/2021-toyota-gr-yaris-98e6611ad034451982b6a9908c63fc47) |
+| Lexus LFA, 2011 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/2011-lexus-lfa-83d062d1cd144e6a944c7415ef864889) |
+| Lexus LFA Nürburgring, 2012 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/2012-lexus-lfa-nurburgring-package-c9d725a16ea6424fa74403b5138808b2) |
+| Mazda 787B, 1991 | [heynic](https://sketchfab.com/heynic) | BY | [Sketchfab](https://sketchfab.com/3d-models/mazda-787b-wwwvecarzcom-2d23833aba9b4efcbf3ec4876a12f715) |
+| Toyota TS030 Hybrid, 2012 | [heynic](https://sketchfab.com/heynic) | BY | [Sketchfab](https://sketchfab.com/3d-models/toyota-ts030-hybrid-wwwvecarzcom-59f9ff1cbd144e3fa1f2d195512ca248) |
+| Peugeot 9X8 Evo, 2024 | [sohyalebret](https://sketchfab.com/sohyalebret) | BY | [Sketchfab](https://sketchfab.com/3d-models/2024-peugeot-9x8-evo-b3efbf3a774c4411983e630d764c8cea) |
 
 ## Environment
 
@@ -75,8 +100,8 @@ note at the bottom before any commercial use.
 ## Note on vehicle brands and commercial use
 
 The 3D model licenses above cover the digital assets only. Vehicle designs and
-marques (Porsche, Mercedes-Benz, Ferrari, BMW, Lotus, Lamborghini, Audi, BAC)
-remain the intellectual
+marques (Porsche, Mercedes-Benz, Ferrari, BMW, Lotus, Lamborghini, Audi, BAC,
+Volkswagen, Honda, Toyota, Lexus, Mazda, Peugeot) remain the intellectual
 property of their respective manufacturers; this project is a non-commercial
 demonstration and is not affiliated with or endorsed by them.
 
