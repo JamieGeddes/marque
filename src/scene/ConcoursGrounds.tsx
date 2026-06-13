@@ -22,6 +22,7 @@ import { Ground } from './Ground'
 import { CountryHouse } from './CountryHouse'
 import { Gardens } from './Gardens'
 import { ConcoursCarSlot } from './ConcoursCarSlot'
+import { ConcoursProxyField } from './ConcoursProxyField'
 
 const SIGN_FONT = assetUrl('fonts/CormorantGaramond-SemiBold.ttf')
 const MOUNT_R2 = MOUNT_RADIUS * MOUNT_RADIUS
@@ -139,6 +140,7 @@ export function ConcoursGrounds() {
       {concoursLayout.slots.map((slot) => (
         <ConcoursCarSlot key={slot.car.id} slot={slot} />
       ))}
+      <ConcoursProxyField />
 
       <StreamManager />
     </group>

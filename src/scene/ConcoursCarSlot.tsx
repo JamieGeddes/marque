@@ -39,7 +39,7 @@ export function ConcoursCarSlot({ slot }: { slot: ConcoursSlot }) {
       <group position={slot.position} rotation-y={slot.rotationY}>
         {mounted && (
           <Suspense fallback={null}>
-            <CarModel path={car.model.path} castShadow />
+            <CarModel path={car.model.path} castShadow fadeIn />
             <LoadedTicker path={car.model.path} />
           </Suspense>
         )}
