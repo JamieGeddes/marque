@@ -2,13 +2,13 @@ import { useEffect } from 'react'
 import * as THREE from 'three'
 import { useGLTF } from '@react-three/drei'
 
-export function CarModel({ path }: { path: string }) {
+export function CarModel({ path, castShadow = false }: { path: string; castShadow?: boolean }) {
   const { scene } = useGLTF(path, true, true)
 
   useEffect(() => {
     scene.traverse((object) => {
       if (object instanceof THREE.Mesh) {
-        object.castShadow = false
+        object.castShadow = castShadow
         object.receiveShadow = false
       }
     })
@@ -20,7 +20,7 @@ export function CarModel({ path }: { path: string }) {
         `[CarModel] ${path} — size ${size.x.toFixed(2)} x ${size.y.toFixed(2)} x ${size.z.toFixed(2)} m, minY ${box.min.y.toFixed(3)}`,
       )
     }
-  }, [scene, path])
+  }, [scene, path, castShadow])
 
   return <primitive object={scene} />
 }

@@ -90,7 +90,13 @@ note at the bottom before any commercial use.
 
 ## Environment
 
-- HDRI: [Studio Small 09](https://polyhaven.com/a/studio_small_09) — Poly Haven, [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
+- HDRI (halls): [Studio Small 09](https://polyhaven.com/a/studio_small_09) — Poly Haven, [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
+- HDRI (Concours d'Elegance): [Syferfontein 1d Clear](https://polyhaven.com/a/syferfontein_1d_clear) — Poly Haven, [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
+- Texture (grass): [Leafy Grass](https://polyhaven.com/a/leafy_grass) — Poly Haven, [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
+- Texture (gravel): [Gravel Floor](https://polyhaven.com/a/gravel_floor) — Poly Haven, [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
+
+The Concours d'Elegance country house, gardens, fountain and trees are built
+from primitives in-engine — no third-party model.
 
 ## Fonts (SIL Open Font License 1.1)
 

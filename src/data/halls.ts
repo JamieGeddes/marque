@@ -154,12 +154,16 @@ export const halls: HallDefinition[] = [
 /** The favourites hall — its car list is the user's saved collection. */
 export const MY_SHOWROOM_ID = 'my-showroom'
 
+/** The outdoor Concours d'Elegance mode — all cars in one streamed scene. */
+export const CONCOURS_ID = 'concours'
+
 export function getHall(id: string | null): HallDefinition | undefined {
   return halls.find((hall) => hall.id === id)
 }
 
 export function getHallTitle(id: string | null): string {
   if (id === MY_SHOWROOM_ID) return 'My Showroom'
+  if (id === CONCOURS_ID) return "Concours d'Elegance"
   return getHall(id)?.title ?? ''
 }
 

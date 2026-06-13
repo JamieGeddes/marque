@@ -413,6 +413,64 @@ body {
   transform: none;
 }
 
+.concours-card {
+  appearance: none;
+  display: block;
+  width: min(1080px, 92vw);
+  text-align: left;
+  margin: clamp(20px, 4vh, 36px) 0 4px;
+  padding: 26px 32px 22px;
+  cursor: pointer;
+  color: var(--bone);
+  font-family: var(--body);
+  background:
+    linear-gradient(120deg, rgba(120, 150, 190, 0.16), rgba(110, 98, 68, 0.12)),
+    rgba(236, 232, 224, 0.03);
+  border: 1px solid var(--brass-dim);
+  position: relative;
+  overflow: hidden;
+  transition:
+    border-color 0.35s ease,
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.35s ease;
+}
+
+.concours-card:hover,
+.concours-card:focus-visible {
+  border-color: var(--brass);
+  transform: translateY(-3px);
+  outline: none;
+}
+
+.concours-card__kicker {
+  display: block;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: var(--brass);
+}
+
+.concours-card__title {
+  display: block;
+  font-family: var(--display);
+  font-size: clamp(34px, 5vw, 52px);
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  line-height: 1.05;
+  margin: 8px 0 6px;
+}
+
+.concours-card__tagline {
+  display: block;
+  font-family: var(--display);
+  font-style: italic;
+  font-size: clamp(15px, 1.8vw, 18px);
+  color: var(--bone-dim);
+  max-width: 60ch;
+  margin-bottom: 14px;
+}
+
 .hints--lobby {
   position: fixed;
   bottom: 34px;
