@@ -151,7 +151,7 @@ export function Gardens() {
   const hedgeMap = useMemo(() => {
     if (!leaf) return null
     const map = leaf.map.clone()
-    map.repeat.set(20, 0.6)
+    map.repeat.set(24, 0.6)
     map.needsUpdate = true
     return map
   }, [leaf])
@@ -162,10 +162,10 @@ export function Gardens() {
         <Tree key={i} position={t.position} scale={t.scale} seed={i} />
       ))}
 
-      {/* hedge borders along the outer lawn edges */}
+      {/* hedge borders along the outer lawn edges (just beyond the cars) */}
       {[-1, 1].map((side) => (
-        <mesh key={side} position={[side * 30, 0.6, 18]} receiveShadow castShadow>
-          <boxGeometry args={[1.4, 1.2, 90]} />
+        <mesh key={side} position={[side * 36, 0.6, 38]} receiveShadow castShadow>
+          <boxGeometry args={[1.4, 1.2, 110]} />
           <meshStandardMaterial
             color={hedgeMap ? '#9aa775' : HEDGE}
             roughness={1}

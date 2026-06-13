@@ -62,14 +62,22 @@ const CIRCLE_RADIUS = 16
 const RING_RADIUS = 10
 const SPAWN_Z = -30
 const LANE_HALF = 5
-const BOUNDS = { width: 86, depth: 158 } // z ∈ ±79, x ∈ ±43
+// Depth sized to contain the full lawn (the well-spaced classes reach z ≈ 89)
+// with margin; the grass plane is 400² so the larger walkable area still sits
+// well inside it.
+const BOUNDS = { width: 86, depth: 200 } // z ∈ ±100, x ∈ ±43
 
 // Lawn class bands marching from just past the circle out into the gardens.
-const BAND0_Z = -14
-const BAND_DZ = 13
+// Cars sit angled ~65-75° toward the central path, so their long axis runs
+// roughly across the columns — the column gap is the tight one and gets the
+// most room. Bands are placed by a running per-side cursor using each band's
+// real depth (+ LAWN_BAND_GAP), so a big class can never overlap its neighbour.
+const LAWN_START_Z = -14
 const LAWN_INNER_X = 15
-const LAWN_COL_DX = 6.5
-const LAWN_ROW_DZ = 5.5
+const LAWN_COL_DX = 8 // gap between columns (the tight axis)
+const LAWN_ROW_DZ = 6 // gap between rows within a class
+const LAWN_BAND_GAP = 4.5 // clear aisle between consecutive same-side classes
+const LAWN_CAR_HALF_Z = 2.2 // conservative half-depth of a rotated car, for spacing
 
 function faceFrom(x: number, z: number, tx: number, tz: number): number {
   // rotationY whose forward (sin, cos) points from (x,z) toward (tx,tz).
@@ -105,21 +113,27 @@ export function computeConcoursLayout(): ConcoursLayout {
   })
 
   // —— Lawns: one class (hall) per bay, alternating sides, marching toward +Z.
-  halls.forEach((hall, ci) => {
+  // A running cursor per side advances by each band's real depth so bands never
+  // collide; bigger classes spread into a third column to stay shallow.
+  const cursor: Record<number, number> = { [-1]: LAWN_START_Z, [1]: LAWN_START_Z + 7 }
+  halls.forEach((hall) => {
     const lawnCars = hall.carIds
       .filter((id) => !heroSet.has(id))
       .map(getCar)
       .filter((c): c is CarDefinition => !!c)
     if (!lawnCars.length) return
 
-    const side = ci % 2 === 0 ? -1 : 1
-    const band = Math.floor(ci / 2)
-    const bandZ = BAND0_Z + band * BAND_DZ
-    const rowCount = Math.ceil(lawnCars.length / 2)
+    // Place each class on whichever side has advanced less, keeping the two
+    // lawns balanced in depth so neither runs past the grounds.
+    const side = cursor[-1] <= cursor[1] ? -1 : 1
+    const cols = lawnCars.length > 4 ? 3 : 2
+    const rowCount = Math.ceil(lawnCars.length / cols)
+    const halfDepth = ((rowCount - 1) * LAWN_ROW_DZ) / 2 + LAWN_CAR_HALF_Z
+    const bandZ = cursor[side] + halfDepth
 
     lawnCars.forEach((car, j) => {
-      const col = j % 2
-      const row = Math.floor(j / 2)
+      const col = j % cols
+      const row = Math.floor(j / cols)
       const x = side * (LAWN_INNER_X + col * LAWN_COL_DX)
       const z = bandZ + (row - (rowCount - 1) / 2) * LAWN_ROW_DZ
       // Angle three-quarter toward the central path and slightly up-garden.
@@ -140,9 +154,11 @@ export function computeConcoursLayout(): ConcoursLayout {
 
     signs.push({
       title: hall.title,
-      position: [side * (LAWN_INNER_X - 3.5), 0, bandZ - rowCount * 1.3 - 2],
+      position: [side * (LAWN_INNER_X - 3.5), 0, bandZ - halfDepth - 1],
       rotationY: side === -1 ? Math.PI * 0.5 : -Math.PI * 0.5,
     })
+
+    cursor[side] = bandZ + halfDepth + LAWN_BAND_GAP
   })
 
   if (import.meta.env.DEV) {
