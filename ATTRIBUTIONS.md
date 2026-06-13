@@ -87,6 +87,37 @@ note at the bottom before any commercial use.
 | Mazda 787B, 1991 | [heynic](https://sketchfab.com/heynic) | BY | [Sketchfab](https://sketchfab.com/3d-models/mazda-787b-wwwvecarzcom-2d23833aba9b4efcbf3ec4876a12f715) |
 | Toyota TS030 Hybrid, 2012 | [heynic](https://sketchfab.com/heynic) | BY | [Sketchfab](https://sketchfab.com/3d-models/toyota-ts030-hybrid-wwwvecarzcom-59f9ff1cbd144e3fa1f2d195512ca248) |
 | Peugeot 9X8 Evo, 2024 | [sohyalebret](https://sketchfab.com/sohyalebret) | BY | [Sketchfab](https://sketchfab.com/3d-models/2024-peugeot-9x8-evo-b3efbf3a774c4411983e630d764c8cea) |
+| Lotus Exige S 240, 2008 | [Blend_GUY](https://sketchfab.com/Blend_GUY) | BY | [Sketchfab](https://sketchfab.com/3d-models/ac-lotus-exige-240-free-5795366af7bc4fd985c86a3dc81234f5) |
+| Lotus Evora S, 2010 | [DavidAnd3D](https://sketchfab.com/DavidAnd3D) | BY-NC | [Sketchfab](https://sketchfab.com/3d-models/ac-lotus-evora-s-63588352602445dfb94549bda26ce123) |
+| Bugatti Tourbillon, 2026 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/2026-bugatti-tourbillon-4f63f5a74611477989cefd9861b9784a) |
+| Bugatti Divo, 2019 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/2019-bugatti-divo-7849e9f9cf2347c28fb5e41b1629991c) |
+| Bugatti Bolide, 2020 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/2020-bugatti-bolide-concept-658684653b154ffba72d5f9511312ca8) |
+| Bugatti Chiron Pur Sport, 2021 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/2021-bugatti-chiron-pur-sport-f791c209b88249e9856a552672b64fea) |
+| Bugatti Veyron 16.4, 2005 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/2009-bugatti-veyron-164-33da16dacdb34d8088324a24645a1802) |
+| Koenigsegg One:1, 2014 | [Alister.Dsa](https://sketchfab.com/Alister.Dsa) | BY | [Sketchfab](https://sketchfab.com/3d-models/koenigsegg-one-pro-26d50f742f3241f5a36081d93205c764) |
+| Koenigsegg Jesko, 2020 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY | [Sketchfab](https://sketchfab.com/3d-models/2020-koenigsegg-jesko-c657f51fb0db43e38fea172dfa385287) |
+| Koenigsegg Agera RS, 2015 | [RongstadJ](https://sketchfab.com/RongstadJ) | BY | [Sketchfab](https://sketchfab.com/3d-models/koenigsegg-agera-rs-a30e098257254fcfa1323f2841e26d13) |
+| Koenigsegg CCX, 2006 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/2006-koenigsegg-ccx-10efe5c94dd747b4a5157cfd229a8049) |
+| Maserati MC20, 2021 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/2021-maserati-mc20-6811b291cda74d468fab04298029135f) |
+| Maserati MC12 Stradale, 2004 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/2004-maserati-mc12-stradale-a801759b1a2447869f1186372eb320f0) |
+| Lancia Rally 037, 1982 | [heynic](https://sketchfab.com/heynic) | BY | [Sketchfab](https://sketchfab.com/3d-models/lancia-037-stradale-1978-36f1c5964de14e0088d828e88a3749b9) |
+| Lancia Delta HF Integrale Evoluzione, 1992 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/1992-lancia-delta-hf-integrale-evoluzione-6ebb1a271c714e1dacfe4eba04f0e4c3) |
+| Lancia Stratos HF, 1973 | [JamesSlater](https://sketchfab.com/JamesSlater) | BY | [Sketchfab](https://sketchfab.com/3d-models/lancia-stratos-hf-rally-alitalia-livery-76dfbe905346419d817fa03d1e46e547) |
+| Noble M600, 2010 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/2011-noble-m600-746187c4345543e0b09a06fe20c80d6e) |
+| Jaguar XJ220, 1992 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/1992-jaguar-xj220-7dd7bc17b4564f6eb03542ad6cab6dda) |
+| Aston Martin Valiant, 2025 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/2025-aston-martin-valiant-49e5a4e4f02a42f895e2374487490989) |
+| McLaren 765LT, 2020 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/2022-mclaren-765lt-7c1940823fe94e05b7ced7de8ff9fe48) |
+| Lamborghini Countach 25th Anniversary, 1989 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY | [Sketchfab](https://sketchfab.com/3d-models/1989-lamborghini-countach-25th-anniversary-75acd9a580574e128c0886d2bc5a2b21) |
+| Lamborghini Reventón, 2008 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/2008-lamborghini-reventon-0269b1057e224f7c85de8bafc43500bb) |
+| Lamborghini Veneno, 2013 | [huy14320000006](https://sketchfab.com/huy14320000006) | BY | [Sketchfab](https://sketchfab.com/3d-models/lamborghini-venevo-5884f95259ff411c95510cdde5ede33e) |
+| Lamborghini Centenario, 2016 | [TEDIORE](https://sketchfab.com/TEDIORE) | BY-NC | [Sketchfab](https://sketchfab.com/3d-models/lamborghini-centenario-55968d5e76f24ba3ab85b5a373074787) |
+| Lamborghini Revuelto, 2024 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY | [Sketchfab](https://sketchfab.com/3d-models/2024-lamborghini-revuelto-9128ccf717f641b9bcdaa5f06a613f01) |
+| Lamborghini Temerario, 2025 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/2025-lamborghini-temerario-223504eacee54eaf9169cc60db1c0a70) |
+| Lamborghini Sián Roadster, 2021 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY | [Sketchfab](https://sketchfab.com/3d-models/2021-lamborghini-sian-roadster-ddedd95cd1bf478ebe476c8eb9dbe78d) |
+| Lamborghini Huracán Sterrato, 2023 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY | [Sketchfab](https://sketchfab.com/3d-models/2024-lamborghini-huracan-sterrato-7af3c1063acf4439a7e69e05eaf94b9b) |
+| Volkswagen Golf GTI Mk1, 1976 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/1976-volkswagen-golf-gti-mk1-1fc46cb37bd748e3bb9355fcedaf3817) |
+| Volkswagen Beetle, 1968 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/1968-volkswagen-beetle-969a477451ee40bb8e715ec0907d187e) |
+| Audi RS e-tron GT, 2022 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/2022-audi-rs-e-tron-gt-e5b032ec99bc44be9f31761c574fe4c2) |
 
 ## Environment
 
@@ -107,7 +138,8 @@ from primitives in-engine — no third-party model.
 
 The 3D model licenses above cover the digital assets only. Vehicle designs and
 marques (Porsche, Mercedes-Benz, Ferrari, BMW, Lotus, Lamborghini, Audi, BAC,
-Volkswagen, Honda, Toyota, Lexus, Mazda, Peugeot) remain the intellectual
+Volkswagen, Honda, Toyota, Lexus, Mazda, Peugeot, Bugatti, Koenigsegg, Maserati,
+Lancia, Jaguar, Aston Martin, McLaren, Noble) remain the intellectual
 property of their respective manufacturers; this project is a non-commercial
 demonstration and is not affiliated with or endorsed by them.
 

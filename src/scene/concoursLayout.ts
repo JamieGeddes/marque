@@ -50,6 +50,12 @@ const HERO_IDS = [
   'lexus-lfa',
   'mazda-787b',
   'bmw-m1',
+  // New halo marques promoted from the 2026 expansion (each leaves ≥2 cars on
+  // its lawn class): Bugatti, Koenigsegg, a halo Lamborghini and a 90s icon.
+  'bugatti-tourbillon',
+  'koenigsegg-jesko',
+  'lamborghini-countach',
+  'jaguar-xj220',
 ]
 
 const HOUSE_Z = -69
@@ -62,10 +68,11 @@ const CIRCLE_RADIUS = 16
 const RING_RADIUS = 10
 const SPAWN_Z = -30
 const LANE_HALF = 5
-// Depth sized to contain the full lawn (the well-spaced classes reach z ≈ 89)
-// with margin; the grass plane is 400² so the larger walkable area still sits
-// well inside it.
-const BOUNDS = { width: 86, depth: 200 } // z ∈ ±100, x ∈ ±43
+// Depth sized to contain the full lawn. With the 2026 expansion the classes
+// (19 halls, ~87 lawn cars) march further out, so the bound is widened to keep
+// the far bands well inside the 400² grass plane. See __concoursLayout in dev
+// to read the real max slot z.
+const BOUNDS = { width: 86, depth: 300 } // z ∈ ±150, x ∈ ±43
 
 // Lawn class bands marching from just past the circle out into the gardens.
 // Cars sit angled ~65-75° toward the central path, so their long axis runs
