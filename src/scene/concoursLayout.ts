@@ -54,9 +54,12 @@ const HERO_IDS = [
 
 const HOUSE_Z = -69
 const HOUSE_SIZE: [number, number, number] = [42, 13, 14] // w, h, d → front face at z = -62
-const CIRCLE: [number, number] = [0, -48]
+// Pulled forward of the house (front steps sit at z ≈ -58.8, collider front at
+// -58.6) and the ring tightened so the rear arc never lands cars on the steps:
+// back-of-ring car centre = CIRCLE_Z - RING_RADIUS = -55, clear of the portico.
+const CIRCLE: [number, number] = [0, -45]
 const CIRCLE_RADIUS = 16
-const RING_RADIUS = 11.5
+const RING_RADIUS = 10
 const SPAWN_Z = -30
 const LANE_HALF = 5
 const BOUNDS = { width: 86, depth: 158 } // z ∈ ±79, x ∈ ±43
