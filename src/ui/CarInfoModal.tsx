@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useAppStore } from '../store/useAppStore'
 import { getCar } from '../data/cars'
+import { playerControls } from '../lib/playerControls'
 
 function FavouriteButton({ carId }: { carId: string }) {
   const favourites = useAppStore((s) => s.favourites)
@@ -28,11 +29,12 @@ function FavouriteButton({ carId }: { carId: string }) {
 }
 
 function closeModal() {
-  const { setSelectedCarId, setPhase } = useAppStore.getState()
-  setSelectedCarId(null)
-  // Chrome enforces a cooldown before the pointer can re-lock after an
-  // Escape exit, so we land on the paused scrim and let the user click.
-  setPhase('paused')
+  // The modal released the pointer *programmatically* when it opened (not via
+  // an Escape exit), so there's no relock cooldown — go straight back to
+  // walking. The close is always a user gesture (✕ click or Escape keydown),
+  // which satisfies requestPointerLock; onLock then sets phase to 'walking'.
+  useAppStore.getState().setSelectedCarId(null)
+  playerControls.lock()
 }
 
 export function CarInfoModal() {
