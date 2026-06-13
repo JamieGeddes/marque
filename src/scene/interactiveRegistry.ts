@@ -21,3 +21,7 @@ export function getInteractiveTargets(): Object3D[] {
   cache ??= [...targets.values()]
   return cache
 }
+
+if (import.meta.env.DEV) {
+  ;(window as unknown as Record<string, unknown>).__interactiveCount = () => targets.size
+}

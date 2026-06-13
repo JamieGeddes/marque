@@ -17,15 +17,44 @@ export const ROOM = {
   height: 5,
   /** How close the camera may get to a wall. */
   wallMargin: 0.5,
-  /** Where the player enters the hall (facing -z, down the walkway). */
+  /** Where the player enters the room (facing per spawnYaw). */
   spawnZ: 7.4,
+  spawnX: 0,
+  /** Facing on spawn: 0 looks down -Z (toward the exhibits). */
+  spawnYaw: 0,
 }
 
-/** Called by the active hall before the player frame runs (layout effect). */
-export function setRoomDims(width: number, depth: number, spawnZ: number) {
+/**
+ * Called by the active environment before the player frame runs (layout
+ * effect). spawnX/spawnYaw default to the halls' convention (centred, -Z).
+ */
+export function setRoomDims(
+  width: number,
+  depth: number,
+  spawnZ: number,
+  spawnX = 0,
+  spawnYaw = 0,
+) {
   ROOM.width = width
   ROOM.depth = depth
   ROOM.spawnZ = spawnZ
+  ROOM.spawnX = spawnX
+  ROOM.spawnYaw = spawnYaw
+}
+
+/** Axis-aligned box obstacle (e.g. the country house). */
+export interface Box {
+  minX: number
+  minZ: number
+  maxX: number
+  maxZ: number
+}
+
+const boxes = new Set<Box>()
+
+export function registerBox(box: Box): () => void {
+  boxes.add(box)
+  return () => boxes.delete(box)
 }
 
 const colliders = new Set<Collider>()
@@ -83,6 +112,21 @@ export function resolvePosition(x: number, z: number): [number, number] {
       const d = Math.sqrt(d2) || 1
       px = nx + (dx / d) * c.radius
       pz = nz + (dz / d) * c.radius
+    }
+  }
+
+  // Push out of axis-aligned box obstacles along the axis of least penetration.
+  for (const b of boxes) {
+    if (px > b.minX && px < b.maxX && pz > b.minZ && pz < b.maxZ) {
+      const dl = px - b.minX
+      const dr = b.maxX - px
+      const dt = pz - b.minZ
+      const db = b.maxZ - pz
+      const m = Math.min(dl, dr, dt, db)
+      if (m === dl) px = b.minX
+      else if (m === dr) px = b.maxX
+      else if (m === dt) pz = b.minZ
+      else pz = b.maxZ
     }
   }
   return [px, pz]

@@ -1,6 +1,10 @@
+import { useGLTF } from '@react-three/drei'
 import { useAppStore } from '../store/useAppStore'
 import { playerControls } from './playerControls'
-import { getHallCars } from '../data/halls'
+import { getHallCars, CONCOURS_ID } from '../data/halls'
+import { concoursLayout, concoursInitialPaths, concoursInitialIds } from '../scene/concoursLayout'
+import { setRoomDims } from '../scene/collision'
+import { seedMounted } from '../scene/concoursStream'
 import { allLoaded } from './hallCache'
 
 /**
@@ -12,8 +16,23 @@ import { allLoaded } from './hallCache'
  */
 export function requestEnterHall(hallId: string) {
   const { favourites, setCurrentHallId, setPhase } = useAppStore.getState()
-  const hallCars = getHallCars(hallId, favourites)
   setCurrentHallId(hallId)
+
+  if (hallId === CONCOURS_ID) {
+    // Set bounds/spawn + seed the hero ring SYNCHRONOUSLY so Player's spawn
+    // effect (which runs before ConcoursGrounds commits behind Suspense) reads
+    // the right room. Gate only on the hero ring; the rest streams on foot.
+    const { bounds, spawn } = concoursLayout
+    setRoomDims(bounds.width, bounds.depth, spawn.z, spawn.x, spawn.yaw)
+    seedMounted(concoursInitialIds())
+    const paths = concoursInitialPaths()
+    paths.forEach((p) => useGLTF.preload(p, true, true))
+    if (allLoaded(paths)) playerControls.lock()
+    else setPhase('hall-loading')
+    return
+  }
+
+  const hallCars = getHallCars(hallId, favourites)
   if (allLoaded(hallCars.map((car) => car.model.path))) {
     playerControls.lock()
   } else {

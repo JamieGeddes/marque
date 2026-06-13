@@ -5,6 +5,12 @@ lobby, walk among the cars, circle each one at eye level, and read its story
 at the pedestal beside it. Mark favourites (♥ in a car's details) to build
 your own hall — My Showroom — persisted in the browser's local storage.
 
+Or enter the **Concours d'Elegance**: the whole collection arranged outdoors
+on the lawns and driveway of an English country house under a clear sky. The
+cars stream in by proximity as you walk, so only the part of the grounds
+around you is ever loaded. Same controls; **L** (or the pause screen) returns
+to the lobby.
+
 Built with React 19, TypeScript, Vite, three.js via @react-three/fiber and
 @react-three/drei.
 

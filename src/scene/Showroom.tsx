@@ -1,15 +1,17 @@
-import { Suspense, useEffect, useLayoutEffect, useMemo } from 'react'
-import { Canvas } from '@react-three/fiber'
+import { Suspense, useEffect, useLayoutEffect, useMemo, useRef } from 'react'
+import { Canvas, useFrame } from '@react-three/fiber'
 import { PerformanceMonitor } from '@react-three/drei'
-import { getHallCars } from '../data/halls'
+import { getHallCars, CONCOURS_ID } from '../data/halls'
 import { useAppStore } from '../store/useAppStore'
-import { markLoaded } from '../lib/hallCache'
+import { markLoaded, allLoaded } from '../lib/hallCache'
+import { concoursInitialPaths } from './concoursLayout'
 import { setRoomDims } from './collision'
 import { computeHallLayout } from './layout'
 import { Room } from './Room'
 import { Lighting } from './Lighting'
 import { Player } from './Player'
 import { CarExhibit } from './CarExhibit'
+import { ConcoursGrounds } from './ConcoursGrounds'
 import { InteractionRaycaster } from './InteractionRaycaster'
 
 /**
@@ -52,26 +54,58 @@ function ActiveHall() {
   )
 }
 
+/**
+ * Concours streams cars in per-car (no single Suspense boundary), so it can't
+ * use HallReadyNotifier. Instead, poll until the hero ring's models have all
+ * resolved (each marks itself loaded), then leave the loading gate. A deadline
+ * guarantees we never get stuck on it.
+ */
+function ConcoursReadyNotifier() {
+  const heroPaths = useRef<string[]>(concoursInitialPaths())
+  const deadline = useRef(0)
+
+  useFrame(() => {
+    if (deadline.current === 0) deadline.current = performance.now() + 15000
+    const { phase, setPhase } = useAppStore.getState()
+    if (phase !== 'hall-loading') return
+    if (allLoaded(heroPaths.current) || performance.now() > deadline.current) {
+      setPhase('hall-ready')
+    }
+  })
+
+  return null
+}
+
 export function Showroom() {
   const setQuality = useAppStore((s) => s.setQuality)
   const quality = useAppStore((s) => s.quality)
+  const currentHallId = useAppStore((s) => s.currentHallId)
+  const isConcours = currentHallId === CONCOURS_ID
 
   return (
     <div className="canvas-root">
       <Canvas
+        shadows
         dpr={quality === 'low' ? 1 : [1, 1.75]}
-        camera={{ fov: 70, near: 0.1, far: 80, position: [0, 1.65, 7.4] }}
+        camera={{ fov: 70, near: 0.1, far: 600, position: [0, 1.65, 7.4] }}
         gl={{ antialias: true }}
       >
         <color attach="background" args={['#0c0c0e']} />
         <PerformanceMonitor onDecline={() => setQuality('low')}>
           <Suspense fallback={null}>
-            <Lighting />
-            <ActiveHall />
-            <HallReadyNotifier />
+            {isConcours ? (
+              <ConcoursGrounds />
+            ) : (
+              <>
+                <Lighting />
+                <ActiveHall />
+                <HallReadyNotifier />
+              </>
+            )}
           </Suspense>
           <Player />
           <InteractionRaycaster />
+          {isConcours && <ConcoursReadyNotifier />}
         </PerformanceMonitor>
       </Canvas>
     </div>

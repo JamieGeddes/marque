@@ -4,7 +4,7 @@ import { useAppStore } from '../store/useAppStore'
 import { playerControls } from '../lib/playerControls'
 import { exitToLobby, requestEnterHall } from '../lib/interactions'
 import { useIsTouchDevice } from '../hooks/useIsTouchDevice'
-import { halls, MY_SHOWROOM_ID, getHallTitle } from '../data/halls'
+import { halls, MY_SHOWROOM_ID, CONCOURS_ID, getHallTitle } from '../data/halls'
 import { getCar } from '../data/cars'
 
 function Masthead({ compact }: { compact?: boolean }) {
@@ -67,8 +67,22 @@ function Lobby() {
   return (
     <div className="overlay overlay--solid overlay--lobby">
       <Masthead compact />
+      <button
+        type="button"
+        className="concours-card rise"
+        style={{ animationDelay: '0.45s' }}
+        onClick={() => requestEnterHall(CONCOURS_ID)}
+      >
+        <span className="concours-card__kicker">Featured · Open Air</span>
+        <span className="concours-card__title">Concours d’Elegance</span>
+        <span className="concours-card__tagline">
+          The whole collection on the lawns of an English country house — walk the driveway and
+          gardens under a clear sky
+        </span>
+        <span className="hall-card__enter">Enter the grounds →</span>
+      </button>
       <p className="lobby__label rise" style={{ animationDelay: '0.5s' }}>
-        Select a hall
+        Or select a hall
       </p>
       <div className="lobby__grid">
         {halls.map((hall, i) => (

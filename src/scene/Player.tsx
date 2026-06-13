@@ -28,12 +28,12 @@ export function Player() {
   const camera = useThree((state) => state.camera)
   const currentHallId = useAppStore((s) => s.currentHallId)
 
-  // Place the player at the hall entrance whenever a hall is (re)entered.
-  // ActiveHall's layout effect has already set ROOM.spawnZ by the time this runs.
+  // Place the player at the entrance whenever an environment is (re)entered.
+  // The active scene's layout effect has set ROOM.spawn* by the time this runs.
   useEffect(() => {
     if (!currentHallId) return
-    camera.position.set(0, EYE_HEIGHT, ROOM.spawnZ)
-    camera.rotation.set(0, 0, 0, 'YXZ')
+    camera.position.set(ROOM.spawnX, EYE_HEIGHT, ROOM.spawnZ)
+    camera.rotation.set(0, ROOM.spawnYaw, 0, 'YXZ')
   }, [currentHallId, camera])
 
   useEffect(() => {
