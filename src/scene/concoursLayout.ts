@@ -84,6 +84,27 @@ function faceFrom(x: number, z: number, tx: number, tz: number): number {
   return Math.atan2(tx - x, tz - z)
 }
 
+// Clearance from a car's footprint edge to its placard.
+const PLACARD_CLEAR = 0.6
+
+/**
+ * Half-extent of a car's (rotated) footprint along the unit direction (dx,dz).
+ * A car angled toward the path reaches far further along its length than its
+ * width, so a width-only offset buries the placard inside the body — this
+ * projects the true oriented box so the placard always clears the car.
+ */
+function footprintHalfExtent(
+  rotationY: number,
+  length: number,
+  width: number,
+  dx: number,
+  dz: number,
+): number {
+  const fx = Math.sin(rotationY)
+  const fz = Math.cos(rotationY)
+  return (length / 2) * Math.abs(fx * dx + fz * dz) + (width / 2) * Math.abs(fz * dx - fx * dz)
+}
+
 export function computeConcoursLayout(): ConcoursLayout {
   const slots: ConcoursSlot[] = []
   const signs: ClassSign[] = []
@@ -96,10 +117,13 @@ export function computeConcoursLayout(): ConcoursLayout {
     const x = CIRCLE[0] + Math.sin(a) * RING_RADIUS
     const z = CIRCLE[1] + Math.cos(a) * RING_RADIUS
     const rotationY = faceFrom(x, z, CIRCLE[0], CIRCLE[1])
-    // Placard on the outer side of the ring, facing outward toward visitors.
+    // Placard on the outer side of the ring, facing outward toward visitors —
+    // pushed clear of the car's rear, which points outward here.
     const outX = Math.sin(a)
     const outZ = Math.cos(a)
-    const pad = car.collider.width / 2 + 0.7
+    const pad =
+      footprintHalfExtent(rotationY, car.collider.length, car.collider.width, outX, outZ) +
+      PLACARD_CLEAR
     slots.push({
       car,
       position: [x, 0, z],
@@ -138,15 +162,17 @@ export function computeConcoursLayout(): ConcoursLayout {
       const z = bandZ + (row - (rowCount - 1) / 2) * LAWN_ROW_DZ
       // Angle three-quarter toward the central path and slightly up-garden.
       const rotationY = faceFrom(x, z, 0, z + 7)
-      const pad = car.collider.width / 2 + 0.7
+      // Placard toward the central path, clear of the car's (angled) footprint.
+      const pad =
+        footprintHalfExtent(rotationY, car.collider.length, car.collider.width, -side, 0) +
+        PLACARD_CLEAR
       slots.push({
         car,
         position: [x, 0, z],
         rotationY,
         area: 'lawn',
         placard: {
-          // toward the central path (inner edge of the car)
-          position: [x - side * pad, 0, z + 1.1],
+          position: [x - side * pad, 0, z],
           rotationY: side === -1 ? Math.PI * 0.5 : -Math.PI * 0.5,
         },
       })
