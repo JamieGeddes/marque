@@ -8,32 +8,49 @@ import json, os, sys, time, urllib.request, zipfile, datetime
 
 TOKEN = os.environ.get("SKETCHFAB_API_TOKEN") or sys.exit("SKETCHFAB_API_TOKEN not set")
 
+# 2026-06 expansion batch: the 31 new candidates from models.txt. Already-present
+# ids are skipped by the on-disk check, so re-running is safe.
 MODELS = [
-    ("audi-sport-quattro", "a2e98736245448afa807a2b5cabe05c7"),
-    ("audi-r8-gt-2011", "82a564b96dde47a78925d9e45b78aaa1"),
-    ("audi-r8-v10-gt", "0701d14ce550407f900df891316788f0"),
-    ("audi-rs6-avant-gt", "85ccb4a2903e4eeab4c8298a8fa4e39f"),
-    ("audi-r15-tdi", "f64fce5acb8a4d81a08b1bd84a6792d9"),
-    ("vw-idr", "109ed75bc4df4400a308cbff7cc70f6d"),
-    ("vw-w12-concept", "4b8faf5ec5274676b1f16cbe3f836e03"),
-    ("honda-s800", "fa6c6113f1e34d9baaff80b5b586a25d"),
-    ("honda-nsx-r", "a21edb35a7714774a10b74642e815ca2"),
-    ("honda-civic-type-r-fk8", "c312252877204a44999bf084d1e19118"),
-    ("honda-integra-dc5", "0fea873aaf694d1b98c308b0becd51ce"),
-    ("honda-civic-type-r-fl5", "8c9484184a2b4254aafd67418b8c18db"),
-    ("honda-civic-type-r-fk2", "423afaa1c6664859832d4a5458d90b52"),
-    ("honda-civic-type-r-ek9", "4715562e16c44c5e9e847d9ff3fc2170"),
-    ("honda-crx", "573d5c2480324a879ee15221ee426160"),
-    ("honda-integra-dc2", "db88d2cc21654a4eb73ec9f0c2a7e113"),
-    ("lexus-lfa", "83d062d1cd144e6a944c7415ef864889"),
-    ("lexus-lfa-nurburgring", "c9d725a16ea6424fa74403b5138808b2"),
-    ("toyota-ts030", "59f9ff1cbd144e3fa1f2d195512ca248"),
-    ("toyota-gr-yaris", "98e6611ad034451982b6a9908c63fc47"),
-    ("toyota-gr-supra", "9231f2d5e71a43dd87603dc0b339d99d"),
-    ("toyota-ae86", "a5737bf3cc9b4179a6e5ebe173ff70d9"),
-    ("toyota-supra-a80", "dd897d7823784bc5893c183c1328e8cb"),
-    ("mazda-787b", "2d23833aba9b4efcbf3ec4876a12f715"),
-    ("peugeot-9x8", "b3efbf3a774c4411983e630d764c8cea"),
+    # Lotus (join the existing Lotus Collection)
+    ("lotus-exige-240", "5795366af7bc4fd985c86a3dc81234f5"),
+    ("lotus-evora-s", "63588352602445dfb94549bda26ce123"),
+    # Bugatti
+    ("bugatti-tourbillon", "4f63f5a74611477989cefd9861b9784a"),
+    ("bugatti-divo", "7849e9f9cf2347c28fb5e41b1629991c"),
+    ("bugatti-bolide", "658684653b154ffba72d5f9511312ca8"),
+    ("bugatti-chiron", "f791c209b88249e9856a552672b64fea"),
+    ("bugatti-veyron", "33da16dacdb34d8088324a24645a1802"),
+    # Koenigsegg
+    ("koenigsegg-one", "26d50f742f3241f5a36081d93205c764"),
+    ("koenigsegg-jesko", "c657f51fb0db43e38fea172dfa385287"),
+    ("koenigsegg-agera-rs", "a30e098257254fcfa1323f2841e26d13"),
+    ("koenigsegg-ccx", "10efe5c94dd747b4a5157cfd229a8049"),
+    # Maserati
+    ("maserati-mc20", "6811b291cda74d468fab04298029135f"),
+    ("maserati-mc12", "a801759b1a2447869f1186372eb320f0"),
+    # Lancia
+    ("lancia-037", "36f1c5964de14e0088d828e88a3749b9"),
+    ("lancia-delta-integrale", "6ebb1a271c714e1dacfe4eba04f0e4c3"),
+    ("lancia-stratos", "76dfbe905346419d817fa03d1e46e547"),
+    # British GT
+    ("noble-m600", "746187c4345543e0b09a06fe20c80d6e"),
+    ("jaguar-xj220", "7dd7bc17b4564f6eb03542ad6cab6dda"),
+    ("aston-martin-valiant", "49e5a4e4f02a42f895e2374487490989"),
+    ("mclaren-765lt", "7c1940823fe94e05b7ced7de8ff9fe48"),
+    # Lamborghini (expand Raging Bulls)
+    ("lamborghini-countach", "75acd9a580574e128c0886d2bc5a2b21"),
+    ("lamborghini-reventon", "0269b1057e224f7c85de8bafc43500bb"),
+    ("lamborghini-veneno", "5884f95259ff411c95510cdde5ede33e"),
+    ("lamborghini-centenario", "55968d5e76f24ba3ab85b5a373074787"),
+    ("lamborghini-revuelto", "9128ccf717f641b9bcdaa5f06a613f01"),
+    ("lamborghini-temerario", "223504eacee54eaf9169cc60db1c0a70"),
+    ("lamborghini-sian", "ddedd95cd1bf478ebe476c8eb9dbe78d"),
+    ("lamborghini-huracan-sterrato", "7af3c1063acf4439a7e69e05eaf94b9b"),
+    # Volkswagen
+    ("vw-golf-gti-mk1", "1fc46cb37bd748e3bb9355fcedaf3817"),
+    ("vw-beetle", "969a477451ee40bb8e715ec0907d187e"),
+    # Audi (join Four Rings)
+    ("audi-rs-etron-gt", "e5b032ec99bc44be9f31761c574fe4c2"),
 ]
 
 def api(path):
