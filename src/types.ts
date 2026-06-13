@@ -25,6 +25,9 @@ export interface CarDefinition {
     path: string
     /** 1 when the asset pipeline has normalized the GLB to meters. */
     scale: number
+    /** Optional tint for the distant low-poly Concours proxy (CSS color).
+     *  Falls back to a deterministic neutral derived from `id`. */
+    proxyColor?: string
   }
   /** Real-world footprint in meters; drives the walk-around collider. */
   collider: {

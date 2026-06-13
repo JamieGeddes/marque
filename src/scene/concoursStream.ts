@@ -6,10 +6,17 @@
  */
 import { useSyncExternalStore } from 'react'
 
-export const MOUNT_RADIUS = 38
-export const PRELOAD_RADIUS = 55
-export const UNMOUNT_RADIUS = 52
-export const HARD_CAP = 24
+// View distance for full models. A car mounts its GLB within MOUNT_RADIUS and
+// stays mounted out to UNMOUNT_RADIUS (hysteresis prevents flicker at the edge);
+// beyond that it is a proxy. PRELOAD_RADIUS must stay the largest so the GLB is
+// already cached before it mounts. HARD_CAP bounds how many full models render
+// at once — in dense lawn areas the nearest N fill up first, so it, not the
+// radius, is the practical limiter on how far real models reach. Raising these
+// trades GPU/CPU/memory for a deeper field of real cars.
+export const MOUNT_RADIUS = 62
+export const PRELOAD_RADIUS = 84
+export const UNMOUNT_RADIUS = 76
+export const HARD_CAP = 42
 
 let mounted = new Set<string>()
 const listeners = new Set<() => void>()
@@ -33,6 +40,12 @@ function subscribe(cb: () => void): () => void {
   return () => {
     listeners.delete(cb)
   }
+}
+
+/** Subscribe to any membership change (fires on every setMountedSet/seedMounted).
+ *  Used by the proxy field, which needs the whole set rather than one id. */
+export function subscribeMounted(cb: () => void): () => void {
+  return subscribe(cb)
 }
 
 export function useIsMounted(id: string): boolean {
