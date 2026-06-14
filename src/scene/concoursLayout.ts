@@ -56,6 +56,10 @@ const HERO_IDS = [
   'koenigsegg-jesko',
   'lamborghini-countach',
   'jaguar-xj220',
+  // McLaren / boutique-hypercar expansion: the original supercar (leaves 10 on
+  // Made in Woking) and Pagani's halo (leaves 2 on Atelier Hypercars).
+  'mclaren-f1',
+  'pagani-zonda-f',
 ]
 
 const HOUSE_Z = -69
@@ -69,10 +73,11 @@ const RING_RADIUS = 10
 const SPAWN_Z = -30
 const LANE_HALF = 5
 // Depth sized to contain the full lawn. With the 2026 expansion the classes
-// (19 halls, ~87 lawn cars) march further out, so the bound is widened to keep
-// the far bands well inside the 400² grass plane. See __concoursLayout in dev
-// to read the real max slot z.
-const BOUNDS = { width: 86, depth: 300 } // z ∈ ±150, x ∈ ±43
+// (22 halls, ~106 lawn cars) march further out — the per-side cursor now reaches
+// z ≈ 165 — so the bound is widened to keep the far bands and the approach gate
+// (approachZ = depth/2) clear of the lawn, still well inside the 400² grass
+// plane. See __concoursLayout in dev to read the real max slot z.
+const BOUNDS = { width: 86, depth: 350 } // z ∈ ±175, x ∈ ±43
 
 // Lawn class bands marching from just past the circle out into the gardens.
 // Cars sit angled ~65-75° toward the central path, so their long axis runs
