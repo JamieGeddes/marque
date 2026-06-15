@@ -32,7 +32,7 @@ npx gltf-transform optimize "$tmp/normalized.glb" "$tmp/opt.glb" \
 # GPU-compressed KTX2 textures, then re-apply meshopt (the texture passes decode it).
 # Mirrors scripts/compress-textures-ktx2.sh.
 npx gltf-transform uastc "$tmp/opt.glb" "$tmp/uastc.glb" \
-  --slots "{baseColorTexture,normalTexture,emissiveTexture}" --level 4 --mipmaps --zstd 18
+  --slots "{baseColorTexture,normalTexture,emissiveTexture}" --level 2 --mipmaps --zstd 18
 npx gltf-transform etc1s "$tmp/uastc.glb" "$tmp/etc1s.glb" \
   --slots "{metallicRoughnessTexture,occlusionTexture}" --quality 255 --mipmaps
 npx gltf-transform meshopt "$tmp/etc1s.glb" "public/models/$id.glb"
