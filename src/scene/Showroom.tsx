@@ -4,6 +4,7 @@ import { PerformanceMonitor } from '@react-three/drei'
 import { getHallCars, CONCOURS_ID } from '../data/halls'
 import { useAppStore } from '../store/useAppStore'
 import { markLoaded, allLoaded } from '../lib/hallCache'
+import { evictAll } from '../lib/modelMemory'
 import { concoursInitialPaths } from './concoursLayout'
 import { setRoomDims } from './collision'
 import { computeHallLayout } from './layout'
@@ -76,6 +77,20 @@ function ConcoursReadyNotifier() {
   return null
 }
 
+/**
+ * On return to the lobby (currentHallId → null) the active hall / Concours has
+ * unmounted, so nothing is mounted and we can free every resident GLB. Lives
+ * inside the Canvas so this effect runs after the scene's CarModels have run
+ * their unmount cleanups (markUnmounted) in the same R3F commit.
+ */
+function MemoryManager() {
+  const currentHallId = useAppStore((s) => s.currentHallId)
+  useEffect(() => {
+    if (currentHallId === null) evictAll()
+  }, [currentHallId])
+  return null
+}
+
 export function Showroom() {
   const setQuality = useAppStore((s) => s.setQuality)
   const quality = useAppStore((s) => s.quality)
@@ -105,6 +120,7 @@ export function Showroom() {
           </Suspense>
           <Player />
           <InteractionRaycaster />
+          <MemoryManager />
           {isConcours && <ConcoursReadyNotifier />}
         </PerformanceMonitor>
       </Canvas>

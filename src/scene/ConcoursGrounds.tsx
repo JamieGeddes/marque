@@ -15,8 +15,10 @@ import {
   MOUNT_RADIUS,
   PRELOAD_RADIUS,
   UNMOUNT_RADIUS,
+  EVICT_RADIUS,
   HARD_CAP,
 } from './concoursStream'
+import { evictModel, enforceBudget } from '../lib/modelMemory'
 import { SunLight, SUN_POSITION } from './SunLight'
 import { Ground } from './Ground'
 import { CountryHouse } from './CountryHouse'
@@ -28,6 +30,7 @@ const SIGN_FONT = assetUrl('fonts/CormorantGaramond-SemiBold.ttf')
 const MOUNT_R2 = MOUNT_RADIUS * MOUNT_RADIUS
 const PRELOAD_R2 = PRELOAD_RADIUS * PRELOAD_RADIUS
 const UNMOUNT_R2 = UNMOUNT_RADIUS * UNMOUNT_RADIUS
+const EVICT_R2 = EVICT_RADIUS * EVICT_RADIUS
 
 /** Proximity streamer: each tick, decide which cars are mounted. Writes the
  *  shared set only when membership actually changes. */
@@ -58,6 +61,12 @@ function StreamManager() {
       if (d2 < PRELOAD_R2 && !preloaded.current.has(s.car.id)) {
         useGLTF.preload(s.car.model.path, true, true)
         preloaded.current.add(s.car.id)
+      } else if (d2 > EVICT_R2 && preloaded.current.has(s.car.id)) {
+        // Far enough that we won't re-preload soon: free its GPU memory.
+        // evictModel no-ops while the car is still mounted; clearing `preloaded`
+        // lets a later approach re-preload from scratch.
+        evictModel(s.car.model.path)
+        preloaded.current.delete(s.car.id)
       }
       const wants = cur.has(s.car.id) ? d2 < UNMOUNT_R2 : d2 < MOUNT_R2
       if (wants) {
@@ -73,6 +82,10 @@ function StreamManager() {
     let changed = next.size !== cur.size
     if (!changed) for (const id of next) if (!cur.has(id)) { changed = true; break }
     if (changed) setMountedSet(next)
+
+    // LRU backstop: in dense lawn areas more cars can stay resident (preloaded
+    // but unmounted) than the budget allows; trim the least-recently-used.
+    enforceBudget()
   })
 
   return null
