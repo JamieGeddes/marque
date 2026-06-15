@@ -1,16 +1,10 @@
-import { KeyboardControls, type KeyboardControlsEntry } from '@react-three/drei'
+import { KeyboardControls } from '@react-three/drei'
 import { Showroom } from './scene/Showroom'
 import { IntroOverlay } from './ui/IntroOverlay'
 import { Hud } from './ui/Hud'
 import { CarInfoModal } from './ui/CarInfoModal'
 import { MobileControls } from './ui/MobileControls'
-
-const keyMap: KeyboardControlsEntry[] = [
-  { name: 'forward', keys: ['KeyW', 'ArrowUp'] },
-  { name: 'back', keys: ['KeyS', 'ArrowDown'] },
-  { name: 'left', keys: ['KeyA', 'ArrowLeft'] },
-  { name: 'right', keys: ['KeyD', 'ArrowRight'] },
-]
+import { keyMap } from './lib/keyboard'
 
 export default function App() {
   return (

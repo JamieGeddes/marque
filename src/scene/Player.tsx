@@ -5,6 +5,7 @@ import { PointerLockControls, useKeyboardControls } from '@react-three/drei'
 import type { PointerLockControls as PointerLockControlsImpl } from 'three-stdlib'
 import { useAppStore } from '../store/useAppStore'
 import { playerControls } from '../lib/playerControls'
+import { resetMovementKeys } from '../lib/keyboard'
 import { mobileInput } from '../lib/mobileInput'
 import { useIsTouchDevice } from '../hooks/useIsTouchDevice'
 import { resolvePosition, ROOM } from './collision'
@@ -126,10 +127,20 @@ export function Player() {
       // pause screen's "Return to lobby"). A selector that matches nothing
       // keeps locking fully under playerControls.lock()'s control.
       selector="#pointer-lock-none"
-      onLock={() => useAppStore.getState().setPhase('walking')}
+      onLock={() => {
+        // Start from a clean slate: drop any keys held across the transition so
+        // resume only moves the player on input given after returning to walking.
+        resetMovementKeys()
+        useAppStore.getState().setPhase('walking')
+      }}
       onUnlock={() => {
         const { phase, setPhase } = useAppStore.getState()
-        if (phase === 'walking') setPhase('paused')
+        if (phase === 'walking') {
+          // A key held when Esc unlocks can miss its keyup and stay "stuck",
+          // resuming movement on return — clear it so pausing fully stops movement.
+          resetMovementKeys()
+          setPhase('paused')
+        }
       }}
     />
   )
