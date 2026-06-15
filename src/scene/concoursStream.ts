@@ -17,6 +17,12 @@ export const MOUNT_RADIUS = 62
 export const PRELOAD_RADIUS = 84
 export const UNMOUNT_RADIUS = 76
 export const HARD_CAP = 42
+// Distance at which a car's GLB is disposed and dropped from the useGLTF cache
+// to free its GPU memory. Must stay well beyond PRELOAD_RADIUS so we never
+// dispose a car we are about to preload — the wide band (mount 62 / unmount 76
+// / preload 84 / evict 120) keeps load/dispose churn low. Beyond this the car
+// is only ever a proxy silhouette, so disposal is invisible.
+export const EVICT_RADIUS = 120
 
 let mounted = new Set<string>()
 const listeners = new Set<() => void>()

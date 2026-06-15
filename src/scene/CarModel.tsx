@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import * as THREE from 'three'
 import { useFrame } from '@react-three/fiber'
 import { useGLTF } from '@react-three/drei'
+import { registerModel, markMounted, markUnmounted } from '../lib/modelMemory'
 
 /** Seconds for the Concours stream-in dissolve. Shared with the proxy field so
  *  the silhouette fades out over the same window the model fades in. */
@@ -26,6 +27,15 @@ export function CarModel({
   const { scene } = useGLTF(path, true, true)
   const fade = useRef(0)
   const matStates = useRef<MatState[]>([])
+
+  // Track residency/mount state so the eviction triggers (lobby return,
+  // Concours distance, LRU) know this GLB is loaded and whether it's safe to
+  // dispose. Covers halls and Concours, since both render through CarModel.
+  useEffect(() => {
+    registerModel(path, scene)
+    markMounted(path)
+    return () => markUnmounted(path)
+  }, [path, scene])
 
   useEffect(() => {
     scene.traverse((object) => {
