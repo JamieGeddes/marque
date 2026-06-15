@@ -118,6 +118,27 @@ note at the bottom before any commercial use.
 | Volkswagen Golf GTI Mk1, 1976 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/1976-volkswagen-golf-gti-mk1-1fc46cb37bd748e3bb9355fcedaf3817) |
 | Volkswagen Beetle, 1968 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/1968-volkswagen-beetle-969a477451ee40bb8e715ec0907d187e) |
 | Audi RS e-tron GT, 2022 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/2022-audi-rs-e-tron-gt-e5b032ec99bc44be9f31761c574fe4c2) |
+| McLaren F1, 1992 | [Alex.Ka.](https://sketchfab.com/Alex.Ka.) | BY-NC | [Sketchfab](https://sketchfab.com/3d-models/mclaren-f1-d96ebc208df54311964cad24f83e1656) |
+| McLaren F1 LM, 1995 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY | [Sketchfab](https://sketchfab.com/3d-models/1995-mclaren-f1-lm-a0ef25e23a4a423d8fca5c62da54db77) |
+| McLaren MP4-12C, 2012 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY | [Sketchfab](https://sketchfab.com/3d-models/2012-mclaren-mp4-12c-ae2ed2bccbc84bccb21407e1657d860f) |
+| McLaren 675LT Spider, 2017 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY | [Sketchfab](https://sketchfab.com/3d-models/2017-mclaren-675lt-spider-7f3fcc4ef1a7472c91e0aaa9d0a86a89) |
+| McLaren 600LT, 2019 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/2019-mclaren-600lt-3eac09c5ff3646fb94709bc1b31b1943) |
+| McLaren Senna, 2019 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY | [Sketchfab](https://sketchfab.com/3d-models/2019-mclaren-senna-725c62082f754cb28bd07e7e55bfbefc) |
+| McLaren Speedtail, 2020 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY | [Sketchfab](https://sketchfab.com/3d-models/2020-mclaren-speedtail-f2364571602342e798b98f8fee14e2ed) |
+| McLaren Solus GT, 2023 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY | [Sketchfab](https://sketchfab.com/3d-models/2023-mclaren-solus-gt-452421d5d503479bb6e75e4a627b5490) |
+| McLaren Artura, 2023 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY | [Sketchfab](https://sketchfab.com/3d-models/2023-mclaren-artura-d393abd807f04d62b96b1bd82119b5d4) |
+| McLaren W1, 2025 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/2025-mclaren-w1-519ee6f9089b4d548cd4384ef159f62e) |
+| Austin Mini Cooper S, 1965 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/1965-austin-mini-cooper-s-8b063519ced9423db1210bb2423c7d2a) |
+| Mini John Cooper Works Cabrio, 2016 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/2016-mini-john-cooper-works-cabrio-704688ec24e04155aa45a1a2018286eb) |
+| Mini John Cooper Works GP, 2020 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/2020-mini-john-cooper-works-gp-f8fa0409d83a4b099590dbcc7884a908) |
+| Pagani Zonda F, 2005 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/2005-pagani-zonda-f-708ee246211244a88aa3c36f0f21f4df) |
+| Rimac Nevera R, 2025 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/2025-rimac-nevera-r-755944b48f4b49bd820fa7cb73d906c5) |
+| Glickenhaus SCG 004C, 2020 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/2020-scg-004c-de1b2e02fb094e09a54bc27c72912852) |
+| Jaguar XKR 5.0 Supercharged Speed Pack, 2009 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/2009-jaguar-xkr-50-supercharged-speed-pack-f3967a3f59fc469e91be12effce74904) |
+| Aston Martin One-77, 2009 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/2009-aston-martin-one-77-bc691ea66a2747aca226fbf3c51fbb04) |
+| TVR Sagaris, 2006 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/2006-tvr-sagaris-41c36ef256214e0f99d317c0369f1bab) |
+| Ferrari 430 Scuderia, 2008 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/2008-ferrari-430-scuderia-b00843d61131449595b82ac83f341558) |
+| Porsche 963 LMDh, 2023 | [ddiaz-design](https://sketchfab.com/ddiaz-design) | BY-NC-SA | [Sketchfab](https://sketchfab.com/3d-models/2023-porsche-963-lmdh-racecar-no5-0b46fea1c4484a0c887bd0b9aac86f5d) |
 
 ## Environment
 
@@ -139,7 +160,8 @@ from primitives in-engine — no third-party model.
 The 3D model licenses above cover the digital assets only. Vehicle designs and
 marques (Porsche, Mercedes-Benz, Ferrari, BMW, Lotus, Lamborghini, Audi, BAC,
 Volkswagen, Honda, Toyota, Lexus, Mazda, Peugeot, Bugatti, Koenigsegg, Maserati,
-Lancia, Jaguar, Aston Martin, McLaren, Noble) remain the intellectual
+Lancia, Jaguar, Aston Martin, McLaren, Noble, Mini, Pagani, Rimac, Glickenhaus,
+TVR) remain the intellectual
 property of their respective manufacturers; this project is a non-commercial
 demonstration and is not affiliated with or endorsed by them.
 
