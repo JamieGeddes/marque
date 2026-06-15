@@ -8,8 +8,9 @@
  * only add/remove cars from the scene graph; they free nothing. This module
  * closes that gap: `CarModel` registers each scene as it loads and reports when
  * it is mounted, and the eviction triggers (lobby return, Concours distance,
- * LRU backstop) call `evictModel`/`evictAll`/`enforceBudget` to traverse the
- * scene, dispose its geometries/materials/textures, and drop the cache entry.
+ * and the bytes-based LRU budget) call `evictModel`/`evictAll`/`enforceBudget`
+ * to traverse the scene, dispose its geometries/materials/textures, and drop
+ * the cache entry.
  *
  * Plain module state (no React), mirroring `concoursStream.ts`/`hallCache.ts`.
  */
@@ -20,13 +21,20 @@ import { unmarkLoaded } from './hallCache'
 interface ResidentModel {
   scene: THREE.Object3D
   lastUsed: number
+  /** Estimated decoded GPU bytes (textures + geometry), for the LRU budget. */
+  bytes: number
 }
 
-/** Max GLBs kept resident at once. Comfortably above Concours' HARD_CAP (42)
- *  so recently-left cars stay cached for instant re-mount; the LRU only trims
- *  the tail beyond this in dense areas. Count-based to start — easily swapped
- *  for an estimated-bytes budget later. */
-const MAX_RESIDENT_MODELS = 52
+/** Hard ceiling on resident decoded GPU memory. The LRU trims non-mounted
+ *  models once the total exceeds it — a true memory cap, unlike a model count
+ *  (per-model size varies ~80x). Generous enough that the Concours hero ring
+ *  plus nearby cars stay cached; with KTX2-compressed textures a car is only
+ *  ~12-15 MB, so this still holds dozens resident. Tightened on low-RAM devices. */
+const deviceMemoryGb = (navigator as Navigator & { deviceMemory?: number }).deviceMemory
+const VRAM_BUDGET = Math.min(
+  900 * 1024 * 1024,
+  deviceMemoryGb ? (deviceMemoryGb * 1024 * 1024 * 1024) / 8 : Infinity,
+)
 
 const registry = new Map<string, ResidentModel>()
 const mounted = new Set<string>()
@@ -39,9 +47,10 @@ export function registerModel(path: string, scene: THREE.Object3D): void {
   if (existing) {
     existing.scene = scene
     existing.lastUsed = ++tick
+    existing.bytes = estimateBytes(scene)
     return
   }
-  registry.set(path, { scene, lastUsed: ++tick })
+  registry.set(path, { scene, lastUsed: ++tick, bytes: estimateBytes(scene) })
 }
 
 /** Mark a path as currently in the scene tree (and most-recently used). */
@@ -59,18 +68,22 @@ export function isMounted(path: string): boolean {
   return mounted.has(path)
 }
 
-/** Traverse a scene and dispose every unique geometry, material, and texture so
- *  the renderer releases the GPU buffers. `useGLTF.clear` alone does NOT do this
- *  — it only drops the suspense-cache entry. */
-function disposeScene(scene: THREE.Object3D): void {
+interface Resources {
+  geometries: Set<THREE.BufferGeometry>
+  materials: Set<THREE.Material>
+  textures: Set<THREE.Texture>
+}
+
+/** Collect the unique GPU resources under a scene. GLBs frequently share one
+ *  material/texture across many meshes — the Sets dedupe. Shared by disposal
+ *  and the byte estimate. */
+function collectResources(scene: THREE.Object3D): Resources {
   const geometries = new Set<THREE.BufferGeometry>()
   const materials = new Set<THREE.Material>()
   const textures = new Set<THREE.Texture>()
-
   scene.traverse((object) => {
     const obj = object as THREE.Mesh
     if (obj.geometry) geometries.add(obj.geometry)
-    // GLBs frequently share one material across many meshes — the Sets dedupe.
     const mats = Array.isArray(obj.material) ? obj.material : obj.material ? [obj.material] : []
     for (const mat of mats) {
       if (!mat) continue
@@ -80,7 +93,38 @@ function disposeScene(scene: THREE.Object3D): void {
       }
     }
   })
+  return { geometries, materials, textures }
+}
 
+/** Approximate decoded GPU bytes for a loaded scene. Compressed (KTX2) textures
+ *  report their real mip byte sizes; uncompressed ones assume RGBA8 + full mip
+ *  chain. A heuristic for the budget, not an exact figure. */
+function estimateBytes(scene: THREE.Object3D): number {
+  const { geometries, textures } = collectResources(scene)
+  let bytes = 0
+  for (const tex of textures) {
+    const mips = tex.mipmaps as Array<{ data?: ArrayBufferView }> | undefined
+    if (Array.isArray(mips) && mips.length) {
+      for (const mip of mips) bytes += mip.data?.byteLength ?? 0
+    } else {
+      const img = tex.image as { width?: number; height?: number } | undefined
+      bytes += Math.ceil((img?.width ?? 0) * (img?.height ?? 0) * 4 * (4 / 3))
+    }
+  }
+  for (const geo of geometries) {
+    for (const attr of Object.values(geo.attributes)) {
+      bytes += (attr as THREE.BufferAttribute).array?.byteLength ?? 0
+    }
+    bytes += geo.index?.array?.byteLength ?? 0
+  }
+  return bytes
+}
+
+/** Traverse a scene and dispose every unique geometry, material, and texture so
+ *  the renderer releases the GPU buffers. `useGLTF.clear` alone does NOT do this
+ *  — it only drops the suspense-cache entry. */
+function disposeScene(scene: THREE.Object3D): void {
+  const { geometries, materials, textures } = collectResources(scene)
   textures.forEach((t) => t.dispose())
   geometries.forEach((g) => g.dispose())
   materials.forEach((m) => m.dispose())
@@ -106,15 +150,21 @@ export function evictAll(): void {
   for (const path of [...registry.keys()]) evictModel(path)
 }
 
-/** LRU backstop: if we exceed the budget, evict least-recently-used,
- *  non-mounted models until back under it. */
+function residentBytes(): number {
+  let total = 0
+  for (const entry of registry.values()) total += entry.bytes
+  return total
+}
+
+/** LRU backstop: if resident GPU memory exceeds the budget, evict
+ *  least-recently-used, non-mounted models until back under it. */
 export function enforceBudget(): void {
-  if (registry.size <= MAX_RESIDENT_MODELS) return
+  if (residentBytes() <= VRAM_BUDGET) return
   const evictable = [...registry.entries()]
     .filter(([path]) => !mounted.has(path))
     .sort((a, b) => a[1].lastUsed - b[1].lastUsed)
   for (const [path] of evictable) {
-    if (registry.size <= MAX_RESIDENT_MODELS) break
+    if (residentBytes() <= VRAM_BUDGET) break
     evictModel(path)
   }
 }
@@ -125,7 +175,8 @@ if (import.meta.env.DEV) {
   ;(window as unknown as Record<string, unknown>).__modelMemory = () => ({
     resident: registry.size,
     mounted: mounted.size,
-    budget: MAX_RESIDENT_MODELS,
+    residentMB: Math.round(residentBytes() / 1e6),
+    budgetMB: Number.isFinite(VRAM_BUDGET) ? Math.round(VRAM_BUDGET / 1e6) : null,
     paths: [...registry.keys()],
   })
 }
