@@ -5,6 +5,7 @@ import { getHallCars, CONCOURS_ID } from '../data/halls'
 import { useAppStore } from '../store/useAppStore'
 import { markLoaded, allLoaded } from '../lib/hallCache'
 import { evictAll } from '../lib/modelMemory'
+import { setupKTX2 } from '../lib/ktx2'
 import { concoursInitialPaths } from './concoursLayout'
 import { setRoomDims } from './collision'
 import { computeHallLayout } from './layout'
@@ -104,6 +105,7 @@ export function Showroom() {
         dpr={quality === 'low' ? 1 : [1, 1.75]}
         camera={{ fov: 70, near: 0.1, far: 600, position: [0, 1.65, 7.4] }}
         gl={{ antialias: true }}
+        onCreated={({ gl }) => setupKTX2(gl)}
       >
         <color attach="background" args={['#0c0c0e']} />
         <PerformanceMonitor onDecline={() => setQuality('low')}>

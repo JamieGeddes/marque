@@ -6,6 +6,7 @@ import { concoursLayout, concoursInitialPaths, concoursInitialIds } from '../sce
 import { setRoomDims } from '../scene/collision'
 import { seedMounted } from '../scene/concoursStream'
 import { allLoaded } from './hallCache'
+import { extendKTX2 } from './ktx2'
 
 /**
  * Lobby card click. If the hall's models are already in memory we can lock
@@ -26,7 +27,7 @@ export function requestEnterHall(hallId: string) {
     setRoomDims(bounds.width, bounds.depth, spawn.z, spawn.x, spawn.yaw)
     seedMounted(concoursInitialIds())
     const paths = concoursInitialPaths()
-    paths.forEach((p) => useGLTF.preload(p, true, true))
+    paths.forEach((p) => useGLTF.preload(p, true, true, extendKTX2))
     if (allLoaded(paths)) playerControls.lock()
     else setPhase('hall-loading')
     return

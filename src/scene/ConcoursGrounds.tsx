@@ -19,6 +19,7 @@ import {
   HARD_CAP,
 } from './concoursStream'
 import { evictModel, enforceBudget } from '../lib/modelMemory'
+import { extendKTX2 } from '../lib/ktx2'
 import { SunLight, SUN_POSITION } from './SunLight'
 import { Ground } from './Ground'
 import { CountryHouse } from './CountryHouse'
@@ -59,7 +60,7 @@ function StreamManager() {
       const dz = s.position[2] - pz
       const d2 = dx * dx + dz * dz
       if (d2 < PRELOAD_R2 && !preloaded.current.has(s.car.id)) {
-        useGLTF.preload(s.car.model.path, true, true)
+        useGLTF.preload(s.car.model.path, true, true, extendKTX2)
         preloaded.current.add(s.car.id)
       } else if (d2 > EVICT_R2 && preloaded.current.has(s.car.id)) {
         // Far enough that we won't re-preload soon: free its GPU memory.

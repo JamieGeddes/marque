@@ -3,6 +3,7 @@ import * as THREE from 'three'
 import { useFrame } from '@react-three/fiber'
 import { useGLTF } from '@react-three/drei'
 import { registerModel, markMounted, markUnmounted } from '../lib/modelMemory'
+import { extendKTX2 } from '../lib/ktx2'
 
 /** Seconds for the Concours stream-in dissolve. Shared with the proxy field so
  *  the silhouette fades out over the same window the model fades in. */
@@ -24,7 +25,7 @@ export function CarModel({
   castShadow?: boolean
   fadeIn?: boolean
 }) {
-  const { scene } = useGLTF(path, true, true)
+  const { scene } = useGLTF(path, true, true, extendKTX2)
   const fade = useRef(0)
   const matStates = useRef<MatState[]>([])
 
